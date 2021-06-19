@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            /* 不允许拖动、禁止触屏点击出现蓝条（加浏览器兼容）*/
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+            -webkit-appearance: none;
+            /* transition: all 1s; */
+        }
+
+        html, body {
+            overflow: hidden;
+        }
+        body{
+            /*left: -100vw;*/
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("image/bg.png");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            /*align-items: center;*/
+        }
+        .house{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .redFlag{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .people{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        .content{
+            margin-top: 25vh;
+        }
+        /*电子留言文字*/
+        .content{
+            display: block;
+            position: relative;
+            /*left: 38.8vw;*/
+            padding: 0;
+            z-index: 1;
+            animation: titleStart 2s linear 0s 1 normal, title 5s linear 2s infinite normal;
+        }
+        @keyframes titleStart {
+            0%{
+                left: -38.8vw;
+            }
+
+            100%{
+                left: 0;
+            }
+        }
+        @keyframes title {
+            0%{
+                top: 0;
+            }
+            25%{
+                top: 25px;
+            }
+            50%{
+                top: 0;
+            }
+            75%{
+                top: 25px;
+            }
+            100%{
+                top: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!--左下角天安门-->
+    <img class="house" alt="" src="image/house.png">
+    <!--右上角红旗-->
+    <img class="redFlag" alt="" src="image/redFlag.png">
+    <!--右下角烈士-->
+    <img class="people" alt="" src="image/people.png">
+
+    <!--电子留言标题-->
+    <div class="content">
+        <img alt="" src="image/dian.png">
+        <img alt="" src="image/zi.png">
+        <img alt="" src="image/liu.png">
+        <img alt="" src="image/yan.png">
+    </div>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $('body').click( function () {
+            window.location.href = 'signature.html'
+            // window.location.href = 'signature.html'
+        } )
+    </script>
+</body>
+</html>

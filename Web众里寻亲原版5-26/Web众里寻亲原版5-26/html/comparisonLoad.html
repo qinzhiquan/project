@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/comparisonLoad.css">
+</head>
+<body>
+<div class="main" id="main">
+    <div class="shade"></div>
+
+    <img class="mainBg" src="../img/bg.jpg">
+
+    <!--树-->
+    <img alt="" class="tree" src="../img/tree.png"/>
+    <!--阴影树-->
+    <img alt="" class="tree2" src="../img/tree2.png"/>
+    <!--白云-->
+    <img alt="" class="cloud1" src="../img/cloud1.png"/>
+    <img alt="" class="cloud2" src="../img/cloud2.png"/>
+    <!--前边叶子-->
+    <img alt="" class="leaf" src="../img/leaf.png"/>
+    <!--边框-->
+    <img alt="" class="border" src="../img/bg2.png"/>
+
+    <!--返回按钮-->
+    <img class="goBack" src="../img/btn/goBack.png"/>
+    <!--菜单按钮-->
+    <img class="goMenu" src="../img/btn/goMenu.png"/>
+
+    <!--相似度大盒子背景图片-->
+    <img class="similarityBoxBg" src="../img/btn/similarity/similarityBoxBg.png">
+    <!--相似度大盒子头部标题图片-->
+    <img class="similarityBoxHearTitle" src="../img/btn/similarity/similarityBoxHearTitle.png">
+    <!--相似度报告文字-->
+    <p class="similarityReportTitle">
+       	经过对比测试，与您相似度最高的是黑猩猩，相似值为90%，感谢您参与灵长类相似度扫描趣味科普体验，欢迎下次再来！
+    </p>
+    <!--右边猴子图片-->
+    <img class="monkeyImg" src="../data/img/monkeyFace/019-黑白疣猴.jpg"/>
+    <!--中间VS图片-->
+    <img class="VSPhoto" src="../img/btn/similarity/VSPhoto.png"/>
+    <!--左边自己拍的图片-->
+    <img class="photoImg" src="../data/img/monkeyFace/019-黑白疣猴.jpg"/>
+
+    <!--猴子名称按钮-->
+    <p class="toScience">白头叶猴</p>
+
+    <!--下载至手机-->
+    <img class="imgLoad" src="../img/qrCode.png">
+
+    <p class="selfTxt">扫码获取趣味科普体验报告书</p>
+
+    <!--二维码-->
+    <div class="qrCode" id="qrCode">
+    	<div class="qrCodeTitle">微信扫码获取你与猴子的相似度报告</div>
+    </div>
+    
+</div>
+<script src="../js/jquery-1.11.1.min.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/animate.js"></script>
+<script src="../js/qrcode.min.js"></script>
+<script src="../js/html2canvas.js"></script>
+
+<script>
+
+    // 猴子图片名称
+    let monkeyImgNumber = '';
+    if(getUrlParam('monkeyImgNumber')){
+        monkeyImgNumber = getUrlParam('monkeyImgNumber')
+    }
+    $('.monkeyImg').attr('src',`../../Web/data/img/monkeyFace/${monkeyImgNumber}`)
+
+    // 拍照图片数据
+    let imgSrc = window.location.href.split('imgSrc=');
+
+    document.getElementsByClassName('photoImg')[0].src = getUrlParam('imgSrc')
+
+    // 获取相似度
+    let originalPath = `web/data/img/monkeyFace/${monkeyImgNumber}`;
+    let imgBase64 = imgSrc[1].split(',')[1];
+    let percentage = CsszUtils.photoCompareByBase64(originalPath, imgBase64).split('.')[0] || '暂无数据';
+
+
+    $('.toScience').text(monkeyImgNumber.split('-')[1].split('(')[0])
+
+    // 头部文字数据改变
+    let monketName = monkeyImgNumber.split('-')[1].split('(')[0] || '暂无数据';
+    let monkeyLatinName = monkeyImgNumber.split('(')[1].split(')')[0] || '暂无数据';
+    document.getElementsByClassName('similarityReportTitle')[0].innerHTML = `
+        经过对比测试,与您相似度最高的是${monketName}，相似值为${percentage}％，
+    感谢您参与灵长类相似度扫描趣味科普体验,欢迎下次再来!
+    `
+
+    // 简介按钮
+    $('.toScience').click(function () {
+            pageJump('#main',`scienceResult.html?monkeyImgNumber=${monkeyImgNumber}&imgSrc=${imgSrc[1]}`);
+        }
+    )
+
+    // 按钮点击动画
+    $('.goBack').click(function () {
+        pageJump('#main',`discern.html`);
+        }
+    )
+    $('.goMenu').click(function () {
+            pageJump('#main',`discern.html`)
+        }
+    )
+
+    //二维码
+    let qrcodeServerUrl = 'http://yun.gxdig.com:8088/yun-server/yun/base64img/';
+    // 截图图片数据
+    let qrCodeData;
+
+
+    // 点击遮罩层隐藏遮罩层和二维码及提示文字
+    $('.shade').click(function () {
+        $('.shade').hide();
+        $('.qrCode').animate({'opacity':'0'});
+        $('.selfTxt').animate({'opacity':'0'});
+    })
+
+    // 点击下载图片按钮
+    $('.imgLoad').click(function () {
+        // 获取页面截图
+        html2canvas(document.body, {
+            allowTaint: true,
+            taintTest: false,
+            onrendered: function(canvas) {
+                canvas.id = "mycanvas";
+                let dataUrl = canvas.toDataURL();
+                let newImg = document.createElement("img");
+                newImg.src =  dataUrl;
+                qrCodeData = dataUrl;
+            }
+
+        });
+
+        setTimeout(function(){
+            // 如果有传过来的图片数据
+            if(qrCodeData.split(',')[1]){
+
+                // 清空原来的二维码数据
+                $('#qrCode').html('')
+
+                let contentPrefix = qrCodeData.split(',')[0];
+                qrCodeData = qrCodeData.split(',')[1];
+
+                let serialNumber = new Date().getTime();
+                let paramsObj = {
+                    serialNumber:serialNumber,
+                    contentPrefix:contentPrefix,
+                    content:qrCodeData
+                };
+
+                let qrCode = document.getElementById('qrCode');
+
+                // 只创建一个二维码不上传服务器
+                // buildQrcode(qrCode,serialNumber)
+
+                // 执行上传二维码数据函数
+                putQrcodeImgInfo($,paramsObj,function (r){
+                    if(r.code == 0 ){
+                        $('.qrCode').css('display','block');
+                        buildQrcode(qrCode,serialNumber)
+                    }else{
+                        $('.qrCode').css('display','block');
+                        buildQrcode(qrCode,serialNumber)
+                    }
+                })
+            }
+
+            // 显示遮罩层和二维码
+            $('.shade').show();
+            $('.selfTxt').animate({'opacity':'1'});
+            $('.qrCode').animate({'opacity':'1'});
+        },1000)
+    })
+
+    // 上传二维码数据函数
+    function putQrcodeImgInfo(JQ, paramsObj, callBack) {
+        paramsObj.projectZhName = '崇左生态馆-纵里寻亲';
+        paramsObj.projectEnName = 'LookLostRelatives';
+        JQ.ajax({
+            type: "POST",
+            url: qrcodeServerUrl + 'upload',
+            contentType: "application/json",
+            data: JSON.stringify(paramsObj),
+            success: function(r) {
+                if (r.code === 0) {
+                    callBack(r);
+                } else {
+                    alert(r.msg);
+                }
+            }
+        });
+    }
+
+    // 创建二维码函数
+    function buildQrcode(container, serialNumber) {
+        console.log('开始创建二维码');
+        var qrcode = new QRCode(container, {
+            width: 400,
+            height: 400
+        });
+        qrcode.makeCode(qrcodeServerUrl + 'showYunImg.html?serialNumber=' + serialNumber);
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/vivify.css" />
+		<link rel="stylesheet" href="css/animate.css" />
+		
+	</head>
+	<body>
+		<div class="bodyBgWhite"><img src="img/bgWhite.jpg" draggable="false"/></div>
+		<!--<div class="bodyBg"><img src="img/bg.png" draggable="false"/></div>-->
+		<!--头部开始-->
+		<div class="monkeyIndex">
+			<div class="monkeyLogoAll">
+				<div class="monkeyNationLogo"><img src="img/NationLogo.png" draggable="false"/></div>
+				<div class="monkeyLogo"><img src="img/logo.png" draggable="false"/></div>
+			</div>
+			<!--中间开始-->
+			<div class="monkeyContent-nav">
+				<div class="monkeyContent-Title-nav">
+					<div class="monkeyTitle monkeyTitle2">
+						<div class="WhiteMonkey whiteAnimate">国家动物博物馆白头叶猴馆</div>
+						<div class="WhiteMonkey-shadow whiteShadow">国家动物博物馆白头叶猴馆</div>
+					</div>
+					<div class="litleTitle monkeyTitle2">
+						<div class="WhiteMonkey whiteAnimate1">WHITE-HEADED LANGUR BRANCH OF ANTIONAL ZOOLOGICAL MUSEUM</div>
+						<div class="WhiteMonkey-shadow whiteShadow1">WHITE-HEADED LANGUR BRANCH OF ANTIONAL ZOOLOGICAL MUSEUM</div>
+						<!--<img src="img/Litletitle.png" draggable="false"/>-->
+					</div>
+				</div>
+				
+				<!--管理员与游客-->
+				<div class="monkeyContent-btn">
+					<div class="monkeyBtn monkey-Administrator"><img src="img/protect.png" draggable="false" onclick="protect()"/></div>
+					<div class="monkeyBtn monkey-visitor"><img src="img/start.png" draggable="false" onclick="start()"/></div>
+				</div>
+			</div>
+			
+			<!--底部开始-->
+			<div class="monkeyBottom">
+				<div class="hillFront"><img src="img/hillFront.png" draggable="false"/></div>
+				<div class="hillBehind">
+					<img src="img/hillBehind.png" draggable="false"/>
+					<div class="product-hover3"></div>
+					<div class="product-hover4"></div>
+					<div class="product-hover5"></div>
+					<div class="product-hover6"></div>
+				</div>
+			</div>
+			
+			<!--返回按钮-->
+			<div class="monkey-nav-btn">
+				<div class="navBtn monkey-back">
+					<a href="javascript:history.go(-1);">
+						<img src="img/monkeyBack.png" draggable="false"/>
+
+				</a>
+				</div>
+				<div class="navBtn monkey-home">
+					<img src="img/monkeyHome.png" draggable="false" onclick="home()"/>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="js/controlPlate.js"></script>
+	<script type="text/javascript" src="app.config.js"></script>
+	<script type="text/javascript" src="js/common.js" ></script>
+	<script>
+		//无人点击3分钟后返回待机页
+		timesBack();
+		let control = new controlPlate();
+		
+		//		返回主菜单
+		function home(){
+			window.location.href = "nav.html";
+		}
+		
+		// 保护区成果
+		function protect(){
+			reTimesBack();
+			window.location.href = "protect-result.html";
+		}
+		
+		// 启动沙盘
+		function start(){
+			// 灯带开始亮之后，定时开启视频的时间
+			let videoTime = commandConfig["videoTime"];
+			// 灯带开始亮之后，定时开启视频的时间
+			let festiveTime = commandConfig["festiveTime"];
+
+			// 开启驮逐片区灯
+			control.open(commandConfig["tz"]);
+			// 开启大陵片区灯
+			control.open(commandConfig["dl"]);
+			// 开启板利片区灯
+			control.open(commandConfig["bl"]);
+			// 开启岜盆片区灯
+			control.open(commandConfig["bp"]);
+			// 开启灯带
+			control.open(commandConfig["dd"]);
+			
+			// 定时打开视频
+			window.setTimeout(function (){
+				sendUdp("1|playVideo|1");
+				// 播放所有视频时关闭所有灯光
+				control.closeAll();
+			}, videoTime);
+			
+			// 定时打开花灯
+			window.setTimeout(function (){
+				control.open(commandConfig["hd"]);
+			}, festiveTime);
+		}
+	</script>
+</html>

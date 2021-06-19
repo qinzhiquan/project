@@ -1,0 +1,225 @@
+/*common页面样式*/
+._waitPage{background:white; width:100%; height: 100vh; z-index:999999; position:absolute; top:0}
+iframe{width: 100%; height: 100vh; border: none;}
+
+/* 公共样式 */
+/* 禁止选择 */
+/* 禁止手机点击出现蓝条 */
+*{padding:0;margin:0;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;-khtml-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(255,0,0,0);-webkit-appearance:none}
+a{text-decoration:underline}
+li,ul{list-style:none}
+.clear{clear:both}
+
+/* 自定义动画 */
+/* 进场渐入 */
+@keyframes bodyFadein{
+    0%{opacity:0}
+    100%{opacity:1}
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    /* 不允许拖动、禁止触屏点击出现蓝条（加浏览器兼容）*/
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    /* transition: all 1s; */
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.clearfix:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+/* 底部背景 */
+.bg1, .bg2, .bg3 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+.bg1 {
+    height: 565px;
+}
+
+.bg2 {
+    height: 218px;
+}
+.bg3 {
+    left: 84%;
+}
+
+/* app */
+#app {
+    border: 1px;
+    height: 100%;
+    /*background-image: url('../img/bg1.png');*/
+    /*background-size: 100% 100%;*/
+}
+
+.title {
+    padding-top: 50px;
+}
+
+.compony_brand {
+    float: left;
+    margin-left: 50px;
+    z-index: 1;
+}
+.compony_brand .title_logo {
+    float: left;
+}
+.compony_brand .title_logo img {
+    width: 75px;
+}
+.company_name {
+    float: left;
+    margin-top: 10px;
+}
+.company_name span {
+    display: inline-block;
+    white-space: nowrap;
+    color: #fff;
+    font-size: 34px;
+}
+
+.btn_container {
+    position: absolute;
+    bottom: -2%;
+    text-align: center;
+    width: 100%;
+    z-index: 3;
+    left: 7%;
+}
+.btn_container .btn {
+    position: relative;
+    float: left;
+    width: 200px;
+    height: 110px;
+    cursor: pointer;
+    display: flex;
+    margin:0 60px;
+    justify-content: center;
+}
+.pen {
+    background: url("../image/signature/size.png") no-repeat;
+}
+.color {
+    background: url("../image/signature/color.png") no-repeat;
+}
+.reset {
+    background: url("../image/signature/reset.png") no-repeat;
+}
+.check {
+    background: url("../image/signature/check.png") no-repeat;
+}
+.save {
+    background: url("../image/signature/save.png") no-repeat;
+}
+.back {
+    position: absolute;
+    bottom: -0.5%;
+    right: 4%;
+    z-index: 10;
+}
+
+.btn_mask {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .2);
+    z-index: 20;
+}
+.btn_mask.on {
+    display: block;
+}
+
+.option.on { display: block; }
+.option {
+    display: none;
+    position: absolute;
+    width: 120%;
+    bottom: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    text-align: center;
+    z-index: 30;
+}
+.option .pen_img {
+    position: relative;
+    display: block;
+    height: 50px;
+    margin: 50px auto;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.option .color-item {
+    display: inline-block;
+    vertical-align: middle;
+    width: 109px;
+    height: 35px;
+    margin: 10px;
+    cursor: pointer;
+}
+.red    { background: #e01d5b; }
+.blue   { background: #1d6ae0; }
+.green  { background: #1de087; }
+.yellow { background: #f3e41d; }
+.orange { background: #f9850b; }
+.black  { background: #333;    }
+.deep_black { background: #000; }
+
+.pen_img span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 120px;
+    margin-left: -60px;
+    background-color: #000;
+}
+.pen_img .pen_size_30 {
+    height: 30px;
+    margin-top: -15px;
+}
+.pen_img .pen_size_25 {
+    height: 25px;
+    margin-top: -12.5px;
+}
+.pen_img .pen_size_10 {
+    height: 15px;
+    margin-top: -10px;
+}
+.pen_img .pen_size_5 {
+    height: 10px;
+    margin-top: -7.5px;
+}
+.pen_img .pen_size_2 {
+    height: 5px;
+    margin-top: -5px;
+}
+
+/*新增*/
+/*大标题*/
+.flowerTitle {
+    position: absolute;
+    top: 4%;
+    left: 4%;
+}
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <script src="js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="main" id="main">
+		<!--猴子拿相机动画-->
+		<div class="camera"><img src="img/camera/1.png" id="camera" data-length="4" draggable="false"/></div>
+        <!--标题大logo-->
+        <div class="logo">
+            <img alt="" class="" src="img/title1.png"/>
+            <img alt="" class="" src="img/title2.png"/>
+            <img alt="" class="" src="img/title3.png"/>
+            <img alt="" class="" src="img/title4.png"/>
+            <img alt="" class="" src="img/title5.png"/>
+            <img alt="" class="" src="img/face.png"/>
+        </div>
+        <!--人脸识别图标里面线条-->
+        <div class="faceLine">
+        	<img src="img/line.png" draggable="false"/>
+        </div>
+        <!--圆形logo1-->
+        <img alt="" class="logoImg1" src="img/logoImg1.png"/>
+        <!--圆形logo2-->
+        <img alt="" class="logoImg2" src="img/logoImg2.png"/>
+        <!--logo中文-->
+        <div class="logoTitleCN loading05">
+            <span>国</span>
+            <span>家</span>
+            <span>动</span>
+            <span>物</span>
+            <span>博</span>
+            <span>物</span>
+            <span>馆</span>
+            <span>白</span>
+            <span>头</span>
+            <span>叶</span>
+            <span>猴</span>
+            <span>馆</span>
+        </div>
+        <!--logo英文-->
+        <div class="logoTitleEn loading05">
+            <span>WHITE-HEADED</span>
+            <span>LANGUR</span>
+            <span>BRANCH</span>
+            <span>OF</span>
+            <span>NATIONAL</span>
+            <span>ZOOLOGIAL</span> 
+            <span>MUSEUM</span> 
+            <span>CHINA</span>
+        </div>
+
+        <!--左边树-->
+        <img alt="" class="tree" src="img/tree.png"/>
+        <!--右边阴影树-->
+        <img alt="" class="tree2" src="img/tree2.png"/>
+        <!--右边白云-->
+        <img alt="" class="cloud1" src="img/cloud1.png"/>
+        <!--左边白云-->
+        <img alt="" class="cloud2" src="img/cloud2.png"/>
+        <!--前边叶子-->
+        <img alt="" class="leaf" src="img/leaf.png"/>
+        <!--边框-->
+        <img alt="" class="border" src="img/bg2.png"/>
+        <!--光-->
+        <img alt="" class="light" src="img/light.png"/>
+
+    </div>
+
+    </div>
+    <script src="js/jquery-animate-css-rotate-scale.js"></script>
+    <script src="js/animate.js"></script>
+    <script type="text/javascript" src="js/img-animation.js" ></script>
+    <script>
+    	var camera = new ImgAnimation($('#camera'),400);
+        // 点击页跳转首页
+        $(function () {
+      		//猴子拿相机动画
+      		cameraM();
+      		function cameraM() {
+      			$('.camera').animate({
+      				position:'absolute',
+      				right:'0'
+      			}, 500, function(){
+      				camera.play();
+      				window.setTimeout(showM,2800)  //*秒执行showM函数
+      			});
+      			
+      			function showM() {
+      				$('.camera').animate({
+      					position:'absolute',
+      					right:'-8%'
+      				}, 500, function(){
+      					camera.stop();
+      				});
+      			}
+      			window.setTimeout(cameraM,6000)  //*秒执行一次动画
+      		}
+        	
+            // 按钮点击动画
+            $('.main').click(function () {
+                    pageJump('.main','html/discern.html')
+                }
+            )
+        })
+
+    </script>
+
+</body>
+</html>

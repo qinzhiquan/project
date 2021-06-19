@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+    <link rel="stylesheet" href="css/vivify.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/signature.css" />
+<style>
+    img{
+        user-drag:none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -khtml-user-select: none;
+        user-select: none;
+
+    }
+    .title{
+        display: block;
+        position: absolute;
+        left: 41.8vw;
+        top: 10px;
+        padding: 0;
+        z-index: 1;
+        animation: titleStart 2s linear 0s 1 normal, title 5s linear 2s infinite normal;
+    }
+
+    @keyframes titleStart {
+        0%{
+            left: 0;
+        }
+        100%{
+            left: 41.8vw;
+        }
+    }
+    @keyframes title {
+        0%{
+            top: 10px;
+        }
+        25%{
+            top: 25px;
+        }
+        50%{
+            top: 0;
+        }
+        75%{
+            top: 25px;
+        }
+        100%{
+            top: 10px;
+        }
+    }
+    .contextBox{
+        /*background-image: url('img/content/12.png');*/
+        /*background-size: cover;*/
+        position: absolute;
+        top: 52%;
+        left: 2%;
+        right: 2%;
+        text-align: center;
+        z-index: 0;
+    }
+
+    .canvas_container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        /*margin: 0 72px;*/
+        z-index: 10;
+        display: flex;
+        /*定义body的元素垂直居中*/
+        align-items: center;
+        /*定义body的里的元素水平居中*/
+        justify-content: center;
+        z-index: 2;
+    }
+    #canvas{
+        display: block;
+        z-index: 12;
+    }
+    .saveTitle{
+        /*display: none;*/
+        opacity: 0;
+        font-family: 隶书;
+        position: absolute;
+        top: 20vh;
+        left: 44vw;
+        text-align: center;
+        color: #860028;
+        font-size: 50px;
+        z-index: -1;
+    }
+    .saveErrorTitle{
+        /*display: none;*/
+        opacity: 0;
+        font-family: 隶书;
+        position: absolute;
+        top: 20vh;
+        left: 40.729vw;
+        text-align: center;
+        color: red;
+        font-size: 50px;
+        z-index: -1;
+    }
+
+    .layui-layer-btn a { height: 33px; line-height: 33px; margin: 5px 10px 0; border: 0}
+    .layui-layer-btn .layui-layer-btn0 { background: #161388; color: #fff; }
+    .layui-layer-btn .layui-layer-btn1 { background: #161388; color: #fff;}
+
+    .btn1{
+        display: block;
+        position: absolute;
+        width: 130px;
+        height: 46px;
+        bottom: 34px;
+        left: 242px;
+        z-index: 15;
+        /*border-radius: 20%;*/
+    }
+    .btn2{
+        display: block;
+        position: absolute;
+        width: 130px;
+        height: 46px;
+        bottom: 34px;
+        left: 560px;
+        z-index: 15;
+        /*border-radius: 20%;*/
+    }
+    .btn3{
+        display: block;
+        position: absolute;
+        width: 130px;
+        height: 46px;
+        bottom: 34px;
+        left: 878px;
+        z-index: 15;
+        /*border-radius: 20%;*/
+    }
+    .btn4{
+        display: block;
+        position: absolute;
+        width: 130px;
+        height: 46px;
+        bottom: 34px;
+        left: 1200px;
+        z-index: 15;
+        /*border-radius: 20%;*/
+    }
+    .btn5{
+        display: block;
+        position: absolute;
+        width: 130px;
+        height: 46px;
+        bottom: 34px;
+        left: 1518px;
+        z-index: 15;
+        /*border-radius: 20%;*/
+    }
+
+</style>
+</head>
+<body>
+<button class="myBtn2 btn1"></button>
+<button class="myBtn2 btn2"></button>
+<button class="myBtn2 btn3"></button>
+<button class="myBtn2 btn4"></button>
+<button class="myBtn2 btn5"></button>
+<div id="app">
+    <!--背景图-->
+    <div class="heroBg">
+        <img src="img/bg.jpg" draggable="false" />
+    </div>
+
+    <!--大标题-->
+    <img class="title" src="image/signature/title.png" draggable="false" />
+
+    <div class="contextBox" id="contextBox">
+        <!--画布-->
+        <div class="canvas_container" id="canvas_container">
+            <canvas id="canvas" height="847" width="100"></canvas>
+        </div>
+    </div>
+
+    <div class="btn_container">
+        <div class="btn_mask"></div>
+        <div class="btn pen">
+            <div class="option">
+                    <span class="pen_img" id="pen_size_10" size="25,15,10">
+                        <span class="pen_size_10"></span>
+                    </span>
+                <span class="pen_img" id="pen_size_5" size="17,12,8">
+                        <span class="pen_size_5"></span>
+                    </span>
+                <span class="pen_img" id="pen_size_2" size="11,8,7">
+                        <span class="pen_size_2"></span>
+                    </span>
+            </div>
+        </div>
+        <div class="btn color">
+
+            <div class="option">
+                <span class="color-item red active" data-img="pen2-1.png"></span>
+                <span class="color-item blue" data-img="pen2-2.png"></span>
+
+                <span class="color-item orange" data-img="pen2-3.png"></span>
+                <span class="color-item deep_black" data-img="pen2.png"></span>
+            </div>
+        </div>
+        <div class="btn reset" id="reset"></div>
+        <div class="btn check" id="show"></div>
+        <div class="btn save"  id="save"></div>
+    </div>
+
+    <!--返回-->
+    <div class="back">
+        <img src="image/signature/back.png" draggable="false"/>
+    </div>
+
+    <!--保存成功提示-->
+    <h3 class="saveTitle">保存成功</h3>
+    <!--保存失败提示-->
+    <h3 class="saveErrorTitle">请先签字再保存</h3>
+
+    <!--截图img-->
+    <!--<img id="canvasImg" src=image/bg.jpg>-->
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/brush.js"></script>
+<script src="js/polyfill.min.js"></script>
+<script src="js/html2canvas.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/index.js"></script>
+<script src="js/jquery-animate-css-rotate-scale.js"></script>
+
+<script>
+
+ // 是否可以保存
+    let savaStatus = false;
+     document.getElementById('canvas').onmousedown = function(){
+        savaStatus = true;
+    }
+    document.getElementById('canvas').onmouseup = function(){
+        savaStatus = true;
+    }
+
+     document.getElementById('canvas').addEventListener('touchstart', function (e) {
+            savaStatus = true;
+        })
+    document.getElementById('canvas').addEventListener('touchend', function (e) {
+        savaStatus = true;
+
+    })
+
+!function(){
+    var container = document.querySelector(".canvas_container");
+    var width = container.offsetWidth;
+    var height = container.offsetHeight;
+    var canvas = document.getElementById("canvas");
+    canvas.style = "position: absolute;";
+    canvas.width = width;
+    canvas.height = height;
+    var ctx = canvas.getContext("2d");
+
+    // 绘制画板背景图
+    var canvas_bg = new Image();
+    canvas_bg.src = "image/signature/bg.png";
+    canvas_bg.onload = drawBg;
+    // 柱子
+    var pillar_bg = new Image();
+    pillar_bg.src = "image/signature/pillar.png";
+    pillar_bg.onload = drawBg;
+    function drawBg(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(canvas_bg, -12, -3, canvas.width + 22, canvas.height + 14);
+        ctx.drawImage(pillar_bg, 0, canvas.height - 516, 234, 516);
+    }
+
+    // 点击关闭罩层
+    var $mask = $(".btn_mask").click(function(){
+        $(this).hide();
+        $(".btn_container .btn .option").hide();
+    })
+
+    // 弹出选项
+    $(".btn_container .pen,.btn_container .color").click(function(){
+        $mask.show();
+        $(this).children().show();
+    })
+    $(".btn1").click(function(){
+        $mask.show();
+        $('.pen').children().show();
+    })
+    $(".btn2").click(function(){
+        $mask.show();
+        $('.color').children().show();
+    })
+
+	// 默认笔画
+    var brush = new Brush({ max: 10, min: 7, end: 8, canvas: canvas});
+
+    // 改变大小
+    $("#pen_size_2,#pen_size_5,#pen_size_10").click(function(e){
+        e.stopPropagation();
+		//brush = null;
+		brush.changeSize($(this).attr("size").split(","));
+		$mask.click();
+    })
+
+
+    // 更换颜色
+    $(".color-item").click(function(e){
+        e.stopPropagation();
+		brush.changeColor($(this).attr("data-img"));
+        $mask.click();
+    })
+
+    $(".btn3").click(function(){
+        drawBg();
+        savaStatus = false;
+    })
+    // 重置画板
+    $("#reset").click(function(){
+        // brush.clear();
+        drawBg();
+        savaStatus = false;
+    })
+
+    $(".btn4").click(function(){
+        window.location.href = 'see.html'
+    })
+	// 查看
+	$("#show").click(function (){
+        window.location.href = 'see.html'
+	});
+
+    // $(".btn4").click(function(){
+    //     $("#save").click();
+    // })
+    // 保存
+    $(".btn5").click(function(){
+        if( savaStatus ){
+            let contextBoxWidth = document.getElementById('canvas').offsetWidth;
+            let contextBoxHeight = document.getElementById('canvas').offsetHeight;
+            if(savaStatus){
+                console.log('ok');
+                html2canvas(document.getElementById("canvas"), {
+                    width: contextBoxWidth ,
+                    height: contextBoxHeight,
+                    allowTaint: true, //允许污染
+                    taintTest: true, //在渲染前测试图片(没整明白有啥用)
+                    useCORS: true, //使用跨域(当allowTaint为true时这段代码没什么用)
+                    background: "#fff",
+                    onrendered: function( canvas ){
+                        // 将图片转为base64, 0-1 表示清晰度
+                        var imgBlob = canvas.toDataURL('image/png', 1.0);
+                        // 截取base64数据
+                        var base64Data = imgBlob.toString().substring(imgBlob.indexOf(",") + 1);
+                        CsszUtils.base64ToImageFile('Web/data/img/signature', base64Data);
+                        drawBg()
+                    }
+                });
+                $('.saveTitle').animate({'opacity':'1','z-index':'21'}, 100, function () {
+                    $('.saveTitle').animate({'opacity': 0,'z-index':'-1'}, 2000)
+                });
+                savaStatus = false;
+                drawBg()
+
+            }
+        }else {
+            $('.saveErrorTitle').animate({'opacity': '1', 'z-index': '21'}, 100, function () {
+                $('.saveErrorTitle').animate({'opacity': '0', 'z-index': '-1'}, 2000)
+            });
+        }
+        }
+    )
+    // 返回
+    $(".back").click(function(){
+        window.location.href = 'index.html'
+    })
+}()
+
+</script>
+</body>
+</html>

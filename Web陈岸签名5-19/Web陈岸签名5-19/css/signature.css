@@ -1,0 +1,3 @@
+/*common页面样式*/
+._waitPage{background:white; width:100%; height: 100vh; z-index:999999; position:absolute; top:0}
+iframe{width: 100%; height: 100vh; border: none;}

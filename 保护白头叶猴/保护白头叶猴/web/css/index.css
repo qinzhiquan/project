@@ -1,0 +1,441 @@
+
+* {
+	margin: 0;
+	padding: 0;
+		/* 禁止选择 */
+	-moz-user-select: none;
+	/*火狐*/
+	-webkit-user-select: none;
+	/*webkit浏览器*/
+	-ms-user-select: none;
+	/*IE10*/
+	-khtml-user-select: none;
+	/*早期浏览器*/
+	user-select: none;
+	/* 禁止手机点击出现蓝条 */
+	-webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+	-webkit-appearance: none;
+	overflow: hidden;
+}
+
+@keyframes bodyFadein {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+html{overflow: hidden;}
+
+body {
+	opacity: 0;
+	animation: bodyFadein 1s ease-in-out forwards;
+}
+
+/* 微量放大缩小 */
+@keyframes scale{
+	0%{transform:scale(1.2);opacity: 0;}
+	100%{transform:scale(1);opacity: 1;}
+}
+/* 微量缩小放大 */
+@keyframes scales{
+	0%{transform:scale(1);opacity: 1;}
+	50%{transform:scale(1.2);opacity: 1.1;}
+	100%{transform:scale(1);opacity: 1;}
+}
+@keyframes scaless{
+	0%{transform:scale(1);opacity: 1;}
+	50%{transform:scale(1.2);opacity: 1.1;}
+	100%{transform:scale(1);opacity: 1;}
+}
+/* 背景滑动 */
+@keyframes inFinites{
+	0%{transform:translateX(0);-webkit-transform:translateX(0)}
+	100%{transform:translateX(1080px);-webkit-transform:translateX(-1080px)}
+}
+/* 红旗飘动 */
+@keyframes rubberBands{
+	0%{-webkit-transform:scaleX(1);transform:scaleX(1)}
+	30%{-webkit-transform:scale3d(1.05,1,1);transform:scale3d(1.05,1,1)}
+	80%{-webkit-transform:scale3d(1,1.05,1);transform:scale3d(1,1.05,1)}
+	to{-webkit-transform:scaleX(1.1);transform:scaleX(1.1)}
+}
+
+@keyframes inMove{
+	0%{transform:translateX(0);-webkit-transform:translateX(0)}
+	20%{transform:translateX(-20px);-webkit-transform:translateX(-20px)}
+	30%{transform:translateX(20px);-webkit-transform:translateX(20px)}
+	40%{transform:translateX(0);-webkit-transform:translateX(0);transform: scale(1.1);}
+	50%{transform:translateX(-20px);-webkit-transform:translateX(-20px);transform: scale(1);}
+	60%{transform:translateX(20px);-webkit-transform:translateX(20px)}
+	70%{transform:translateX(0);-webkit-transform:translateX(0);transform: scale(1.1);}
+	80%{transform:translateX(-20px);-webkit-transform:translateX(-20px);transform: scale(1);}
+	90%{transform:translateX(20px);-webkit-transform:translateX(20px)}
+	100%{transform:translateX(0);-webkit-transform:translateX(0)}
+}
+
+@keyframes qi{
+	0%{margin-bottom: 0;scale(1.1)}
+	50%{margin-bottom: 50px;scale(1.3)}
+	100%{margin-bottom: 0;scale(1.1)}
+}
+
+@-webkit-keyframes masked-animation {
+    0% {
+        background-position:0 0;
+    }
+    100% {
+        background-position:-100% 0;
+    }
+}
+
+@keyframes hover {
+	0% {
+	    transform: scale(1);
+	}
+	
+	50% {
+	    transform: scale(0.9);
+	}
+	
+	100% {
+	    transform: scale(1);
+	}
+}
+
+.loadBig{
+	font-size: 1.85rem;
+	font-weight: 900;
+	position: absolute;
+	top: 14%;
+	left: 9%;
+}
+
+.loadLitle{
+	font-size: 0.4rem;
+	font-weight: 900;
+	position: absolute;
+	top: 64%;
+	left: 9%;
+}
+
+.loading02 span {
+	animation: loading02 2s infinite alternate;
+}
+
+.loading02 span:nth-child(2) {
+	animation-delay: 0.2s;
+}
+
+.loading02 span:nth-child(3) {
+	animation-delay: 0.4s;
+}
+
+.loading02 span:nth-child(4) {
+	animation-delay: 0.6s;
+}
+
+.loading02 span:nth-child(5) {
+	animation-delay: 0.8s;
+}
+
+.loading02 span:nth-child(6) {
+	animation-delay: 1s;
+}
+
+.loading02 span:nth-child(7) {
+	animation-delay: 1.2s;
+}
+
+.loading02 span:nth-child(8) {
+	animation-delay: 1.4s;
+}
+
+.loading02 span:nth-child(9) {
+	animation-delay: 1.6s;
+}
+
+.loading02 span:nth-child(10) {
+	animation-delay: 1.8s;
+}
+
+.loading02 span:nth-child(11) {
+	animation-delay: 2s;
+}
+
+.loading02 span:nth-child(12) {
+	animation-delay: 2.2s;
+}
+
+@keyframes loading02 {
+	0% {
+		filter: blur(0px);
+		opacity: 1;
+	}
+	
+	50% {
+		filter: blur(0.1px);
+		opacity: 0.4;
+	}
+	
+	100% {
+		filter: blur(0px);
+		opacity: 1;
+	}
+}
+
+@keyframes loading06 {
+	0%,
+	75%,
+	100% {
+		transform: rotateY(-90deg);
+		opacity: 0;
+	}
+	25%,
+	50% {
+		transform: rotateY(0);
+		opacity: 1;
+	}
+}
+
+.loading06 span {
+	position: relative;
+	color: rgba(4,121,28, 0.8);
+}
+
+.loading06 span::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: attr(data-text);
+	color: #41C702;
+	opacity: 0;
+	transform: rotateY(-90deg);
+	animation: loading06 7s infinite;
+}
+
+
+.loading06 span:nth-child(2)::after {
+	animation-delay: 0.2s;
+}
+
+.loading06 span:nth-child(3)::after {
+	animation-delay: 0.4s;
+}
+
+.loading06 span:nth-child(4)::after {
+	animation-delay: 0.6s;
+}
+
+.loading07 span {
+	font-size: 3.5rem;
+	position: relative;
+	color: #41C702;
+	font-weight: 500;
+}
+
+.loading07 span::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: attr(data-text);
+	color: #02560B;
+	opacity: 0;
+	transform: scale(1.5);
+	animation: loading07 9s infinite;
+}
+
+.loading07 span:nth-child(2)::after {
+	animation-delay: 0.1s;
+}
+
+.loading07 span:nth-child(3)::after {
+	animation-delay: 0.2s;
+}
+
+.loading07 span:nth-child(4)::after {
+	animation-delay: 0.3s;
+}
+
+.loading07 span:nth-child(5)::after {
+	animation-delay: 0.4s;
+}
+
+.loading07 span:nth-child(6)::after {
+	animation-delay: 0.5s;
+}
+
+.loading07 span:nth-child(7)::after {
+	animation-delay: 0.6s;
+}
+
+.loading07 span:nth-child(8)::after {
+	animation-delay: 0.7s;
+}
+
+.loading07 span:nth-child(9)::after {
+	animation-delay: 0.8s;
+}
+
+.loading07 span:nth-child(10)::after {
+	animation-delay: 0.9s;
+}
+
+.loading07 span:nth-child(11)::after {
+	animation-delay: 1s;
+}
+
+.loading07 span:nth-child(12)::after {
+	animation-delay: 1.1s;
+}
+
+.loading07 span:nth-child(13)::after {
+	animation-delay: 1.2s;
+}
+
+.loading07 span:nth-child(14)::after {
+	animation-delay: 1.3s;
+}
+
+.loading07 span:nth-child(15)::after {
+	animation-delay: 1.4s;
+}
+
+@keyframes loading07 {
+	0%,
+	75%,
+	100% {
+		transform: scale(1.5);
+		opacity: 0;
+	}
+	25%,
+	50% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.loading08 span {
+	font-size: 3.5rem;
+	position: relative;
+	color: white;
+}
+
+.loading08 span::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: attr(data-text);
+	color: white;
+	opacity: 0;
+	transform: scale(1.5);
+	animation: loading07 9s infinite;
+}
+
+.loading08 span:nth-child(2)::after {
+	animation-delay: 0.1s;
+}
+
+.loading08 span:nth-child(3)::after {
+	animation-delay: 0.2s;
+}
+
+.loading08 span:nth-child(4)::after {
+	animation-delay: 0.3s;
+}
+
+.loading08 span:nth-child(5)::after {
+	animation-delay: 0.4s;
+}
+
+.loading08 span:nth-child(6)::after {
+	animation-delay: 0.5s;
+}
+
+.loading08 span:nth-child(7)::after {
+	animation-delay: 0.6s;
+}
+
+.loading08 span:nth-child(8)::after {
+	animation-delay: 0.7s;
+}
+
+.loading08 span:nth-child(9)::after {
+	animation-delay: 0.8s;
+}
+
+.loading08 span:nth-child(10)::after {
+	animation-delay: 0.9s;
+}
+
+@keyframes loading08 {
+	0%,
+	75%,
+	100% {
+		transform: scale(1.5);
+		opacity: 0;
+	}
+	25%,
+	50% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes spinLogo {
+  0% {
+  	transform: rotate(0deg);
+  }
+  
+  100% {
+  	transform: rotate(360deg);
+  }
+}
+
+.roadRop{position: absolute; top: 1%; left: 1%; width: 100%;}
+.spinLogo{display: inline-block;}
+.spinLogo1{display: inline-block;}
+.roadTopTree{position: absolute; top: 0; right: 0; width: 100%; text-align: right;}
+
+/*内容开始*/
+.roadTitle{position: absolute; top: 25%; text-align: center; width: 100%;}
+.roadContent{font-size: 10rem; font-weight: 900;}
+.baoHuTitle{font-size: 4rem; font-weight: 900;}
+/*.roadProtect{display: inline-block; width: 10rem; height: 10rem;}*/
+
+.roadLine img{width: 48%;}
+.roadBigTitle{position: absolute; top: 20%; left: 24%;}
+.roadLitleTitle{position: absolute; top: 65%; right: 24%;}
+.roadTitleBottom1 {width: 47.5%; margin: auto; background: #035211;}
+.roadTitleBottom1 span{font-size: 1.75rem;}
+
+/*左边底部*/
+.roadLeftRock{position: absolute; bottom: -1%;}
+.roadTreeLeft{position: absolute; bottom: -1%; left: 0; z-index: 1;}
+.roadMonkey{position: absolute; bottom: 13%; left: 5%;}
+.roadLeftRock img,.roadTreeLeft img,.roadMonkey img{width: 82%;}
+
+/*右边底部*/
+.roadRightRock,.roadTreeRight{position: absolute; right: 0; bottom: -1%; text-align: right;}
+.roadRightRock img,.roadTreeRight img{width: 82%;}
+
+.roadBg img{animation: 1.5s fadeIn ease-in-out forwards; opacity: 0;}
+.roadRop img{animation: 1.5s popInLeft ease-in-out forwards; opacity: 0;}
+.roadTopTree img{animation: 1.5s popInTop 0.3s ease-in-out forwards; opacity: 0;}
+.roadLeftRock img{animation: 1.5s bounceInLeft 0.3s ease-in-out forwards; opacity: 0;}
+.roadTreeLeft img,.roadTreeRight img{animation: 1.5s bounceInUp 0.8s ease-in-out forwards; opacity: 0;}
+.roadLeftRock img{animation: 1.5s bounceInLeft 0.5s ease-in-out forwards; opacity: 0;}
+.roadRightRock img{animation: 1.5s bounceInRight 0.5s ease-in-out forwards; opacity: 0;}
+.roadMonkey img{animation: 1.5s jumpInLeft 0.5s ease-in-out forwards; opacity: 0;}
+.roadBao img{animation: 1.5s popIn 1s ease-in-out forwards; opacity: 0;}
+.roadHu img{animation: 1.5s popIn 1.2s ease-in-out forwards; opacity: 0;}
+.roadZhi img{animation: 1.5s popIn 1.4s ease-in-out forwards; opacity: 0;}
+.roadLu img{animation: 1.5s popIn 1.5s ease-in-out forwards; opacity: 0;}
+.roadLine img{animation: 1.5s fadeIn 1.7s ease-in-out forwards; opacity: 0;}
+
+.baoHuTitle{animation: 1.5s popIn 1.6s ease-in-out forwards; opacity: 0;}
+.roadTitleBottom,.roadTitleBottom1{animation: 1.5s zoomIn 1.8s ease-in-out forwards; opacity: 0;}
+.roadContent{animation: 1.5s popIn 1.2s ease-in-out forwards; opacity: 0;}

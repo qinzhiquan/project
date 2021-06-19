@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet" href="css/index.css">
+<style>
+    
+</style>
+</head>
+<body ontouchmove="javascript:window.event.preventDefault();">
+
+    <div id="app">
+        <div class="bg_img"></div>
+
+        <div class="top_title">
+            <div class="title_logo"><img src="img/logo.png" alt=""></div>
+            <div class="company_name">
+                <span>广</span>
+                <span>西</span>
+                <span>建</span>
+                <span>工</span>
+                <span>集</span>
+                <span>团</span>
+                <span>企</span>
+                <span>业</span>
+                <span>文</span>
+                <span>化</span>
+                <span>展</span>
+                <span>示</span>
+                <span>馆</span>
+            </div>
+        </div>
+
+        <div class="big_title">
+            <div class="title_img">
+                <img class="letter" src="img/title_01.png" style="top: 12px; left: 18px;" alt="">
+                <img class="letter" src="img/title_02.png" style="top: 7px; left: 8px;" alt="">
+                <img class="letter" src="img/title_03.png" alt="">
+                <img class="letter" src="img/title_04.png" alt="">
+            </div>
+            <div class="title_text">
+                <img src="img/sub_title.png" alt="">
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="alpha_mask"></div>
+    <div class="center_img_box">
+        <img class="center_img" src="img/center_bg.png" alt="">
+    </div>
+
+<script src="app.config.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/bg_animate.js"></script>
+<script src="js/index.js"></script>
+<script>
+!function(){
+
+    // 进入互动页面
+    document.addEventListener("click", run);
+    document.addEventListener("touchstart", run);
+    
+    function run(e){
+        openPage("nav.html", true, function(e){
+            e.fadeIn(1000);
+        });
+    }
+
+}()
+</script>
+</body>
+</html>

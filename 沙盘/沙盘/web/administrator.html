@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/vivify.css" />
+		<link rel="stylesheet" href="css/animate.css" />
+		<style>
+			.codeOutnumber{display: none; font-weight: bold;}
+			.codeOutnumber span {
+				color: red;
+				opacity: 0;
+				transform: translate(-150px, 0) scale(.3);
+				animation:.5s leftRight forwards;
+				display: inline-block;
+			}
+			
+			@keyframes leftRight {
+				40% {
+					transform: translate(50px, 0) scale(.7);
+					opacity: 1;
+					color: #348c04;
+				}
+				60% {
+					color: #0f40ba;
+				}
+				80% {
+					transform: translate(0) scale(2);
+					opacity: 0.5;
+				}
+				100% {
+					transform: translate(0) scale(1);
+					opacity: 1;
+				}
+			}
+			
+			.codeOutnumber span:nth-of-type(2) {
+				animation-delay: .05s;
+			}
+			
+			.codeOutnumber span:nth-of-type(3) {
+				animation-delay: .1s;
+			}
+			
+			.codeOutnumber span:nth-of-type(4) {
+				animation-delay: .15s;
+			}
+			
+			.codeOutnumber span:nth-of-type(5) {
+				animation-delay: .2s;
+			}
+			
+			.codeOutnumber span:nth-of-type(6) {
+				animation-delay: .25s;
+			}
+			
+			.codeOutnumber span:nth-of-type(7) {
+				animation-delay: .3s;
+			}
+			
+			.codeOutnumber span:nth-of-type(8) {
+				animation-delay: .35s;
+			}
+			
+			.codeOutnumber span:nth-of-type(9) {
+				animation-delay: .4s;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bodyBgWhite"><img src="img/bgWhite.jpg" draggable="false"/></div>
+		<!--<div class="bodyBg"><img src="img/bg.png" draggable="false"/></div>-->
+		<!--头部开始-->
+		<div class="monkeyIndex">
+			<div class="monkeyLogoAll LogoAllAdmin">
+				<div class="monkeyNationLogo LogoAdmin"><img src="img/NationLogo.png" draggable="false"/></div>
+				<div class="monkeyLogo LogoAdmin"><img src="img/logo.png" draggable="false"/></div>
+			</div>
+			<!--中间开始-->
+			<div class="monkeyContent-nav">
+				<div class="monkeyContent-Title-nav monkeyContentAdmin">
+					<div class="monkeyTitle monkeyTitle2-nav">
+						<div class="monkeyTitle monkeyTitle2">
+							<div class="WhiteMonkey whiteAnimate">国家动物博物馆白头叶猴馆</div>
+							<div class="WhiteMonkey-shadow whiteShadow">国家动物博物馆白头叶猴馆</div>
+						</div>
+						<div class="litleTitle monkeyTitle2">
+							<div class="WhiteMonkey whiteAnimate1">WHITE-HEADED LANGUR BRANCH OF ANTIONAL ZOOLOGICAL MUSEUM</div>
+							<div class="WhiteMonkey-shadow whiteShadow1">WHITE-HEADED LANGUR BRANCH OF ANTIONAL ZOOLOGICAL MUSEUM</div>
+							<!--<img src="img/Litletitle.png" draggable="false"/>-->
+						</div>
+					</div>
+				</div>
+				
+				<!--管理员验证码-->
+				<div class="monkeyContent-btn-nav">
+					<!--验证码提示-->
+					<div class="codeTip">
+						<div class="codeOutnumber" id="codeOutnumber">
+							<span>验</span>
+							<span>证</span>
+							<span>码</span>
+							<span>错</span>
+							<span>误</span>
+							<span>，</span>
+							<span>请</span>
+							<span>重</span>
+							<span>新</span>
+							<span>输</span>
+							<span>入</span>
+						</div>
+					</div>
+					
+					<div class="monkeyBtn monkey-Administrator">
+						<img src="img/administrator.png" draggable="false"/>
+						<div class="monkey-code" style="display: none;">
+							<input type="password" autofocus="autofocus" placeholder="请输入验证码" maxlength="10" id="monkeyCode" onkeyup="monkeyCodeInput()"/>
+						</div>
+					</div>
+				</div>
+				
+				<!--键盘-->
+				<div class="sandKeyboard">
+					<div class="keyboard-list">7</div>
+					<div class="keyboard-list">8</div>
+					<div class="keyboard-list">9</div>
+					<div class="keyboard-list">0</div>
+					<div class="keyboard-list">4</div>
+					<div class="keyboard-list">5</div>
+					<div class="keyboard-list">6</div>
+					<div class="keyboard-list" data-type="c">清空</div>
+					<div class="keyboard-list">1</div>
+					<div class="keyboard-list">2</div>
+					<div class="keyboard-list">3</div>
+					<div class="keyboard-list" data-type="d">删除</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			
+			<!--底部开始-->
+			<div class="monkeyBottom">
+				<div class="hillFront"><img src="img/hillFront.png" draggable="false"/></div>
+				<div class="hillBehind">
+					<img src="img/hillBehind.png" draggable="false"/>
+					<div class="product-hover3"></div>
+					<div class="product-hover4"></div>
+				</div>
+			</div>
+			
+			<!--返回按钮-->
+			<div class="monkey-nav-btn">
+				<div class="navBtn monkey-back">
+					<a href="javascript:history.go(-1);">
+						<img src="img/monkeyBack.png" draggable="false"/>
+					</a>
+				</div>
+				<div class="navBtn monkey-home">
+					<img src="img/monkeyHome.png" draggable="false" onclick="home()"/>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="js/controlPlate.js"></script>
+		<script type="text/javascript" src="app.config.js"></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script>
+			//无人点击3分钟后返回待机页
+			timesBack();
+			
+			//验证码判断
+			function monkeyCodeInput(){
+				if (window.event.which === 27) {
+					CsszUtils.quit();
+				}
+				
+				var monkeyCode = document.getElementById('monkeyCode').value;
+				if (monkeyCode.length < 6) {
+					$('#codeOutnumber').css({'display':'none'})
+					$('.monkey-code').css({'top':'54.1%'})
+					$('#codeOutnumber').remove('codeOutnumber span');
+					return;
+				}
+				if (monkeyCode.length == 6 && CsszUtils.checkCode(monkeyCode)){
+					window.location.href = "administrator-protect.html";
+				} else {
+					$('#codeOutnumber').css({'display':'block','color':'red'})
+					$('#codeOutnumber').addClass('codeOutnumber span');
+					$('.monkey-code').css({'top':'58.5%'})
+				}
+			}
+			
+//			返回主菜单
+			function home(){
+				window.location.href = "nav.html";
+			}
+			
+			
+			function show(){
+				document.querySelector('.monkey-code').style.display = "block";
+			}
+			setTimeout(show,2000);
+			
+			$(function(){
+				$('#monkeyCode').click(function(){
+					$('.sandKeyboard').toggle()
+				});
+				
+				// 监听键盘事件
+				$(".keyboard-list").click(function (){
+					let targetEle = $("#monkeyCode");
+					let type = $(this).attr("data-type");
+					// c 表示清空
+					if (type === 'c') {
+						targetEle.val('');
+						return;
+					}
+					// d 表示删除
+					if (type === 'd') {
+						var value = targetEle.val();
+						let len = value.length;
+						targetEle.val(value.substring(0, len - 1));
+						return;
+					}
+					
+					// 键盘输入验证码
+					targetEle.val(targetEle.val() + $(this).text());
+					
+					// 校验验证码
+					monkeyCodeInput();
+				});
+			})
+		</script>
+</html>

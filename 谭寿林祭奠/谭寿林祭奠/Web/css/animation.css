@@ -1,0 +1,263 @@
+/*背景图*/
+@keyframes bodyFadein {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+/*标题*/
+.heroBg img{
+	opacity: 0;
+	animation: 1s bodyFadein 0.1s ease-in-out forwards;
+}
+
+/*献花标题*/
+.FlowerBg img{
+	opacity: 0;
+	animation: 0.5s bodyFadein 0.1s ease-in-out forwards;
+}
+
+/*左上角标题*/
+.flowerTitle img {
+	opacity: 1;
+	/*animation: 1s driveInLeft 0.1s ease-in-out forwards;*/
+}
+/*大标题*/
+.ContentTitle {
+	display: inline-block;
+}
+/*观*/
+.guan img {
+	opacity: 0;
+	animation: 1.5s lightSpeedIn 0.1s ease-in-out forwards;
+}
+/*众*/
+.zhong img {
+	opacity: 0;
+	animation: 1.5s lightSpeedIn 0.2s ease-in-out forwards;
+}
+/*留*/
+.liu img {
+	opacity: 0;
+	animation: 1.5s lightSpeedIn 0.3s ease-in-out forwards;
+}
+/*言*/
+.yan img {
+	opacity: 0;
+	animation: 1.5s lightSpeedIn 0.4s ease-in-out forwards;
+}
+/*小标题*/
+.three {
+	display: none;
+}
+.three span {
+	color: #632629;
+	opacity: 0;
+	transform: translate(-300px, 0) scale(0);
+	animation: sideSlide 4s infinite;
+}
+.animate span:nth-of-type(2) {
+  animation-delay: .05s;
+}
+
+.animate span:nth-of-type(3) {
+  animation-delay: .1s;
+}
+
+.animate span:nth-of-type(4) {
+  animation-delay: .15s;
+}
+
+.animate span:nth-of-type(5) {
+  animation-delay: .2s;
+}
+
+.animate span:nth-of-type(6) {
+  animation-delay: .25s;
+}
+
+.animate span:nth-of-type(7) {
+  animation-delay: .3s;
+}
+
+.animate span:nth-of-type(8) {
+  animation-delay: .35s;
+}
+
+.animate span:nth-of-type(9) {
+  animation-delay: .4s;
+}
+
+.animate span:nth-of-type(10) {
+  animation-delay: .45s;
+}
+
+.animate span:nth-of-type(11) {
+  animation-delay: .5s;
+}
+
+.animate span:nth-of-type(12) {
+  animation-delay: .55s;
+}
+
+.animate span:nth-of-type(13) {
+  animation-delay: .6s;
+}
+
+.animate span:nth-of-type(14) {
+  animation-delay: .65s;
+}
+.animate span:nth-of-type(15) {
+  animation-delay: .7s;
+}
+
+.animate span:nth-of-type(16) {
+  animation-delay: .75s;
+}
+/*小标题*/
+@keyframes sideSlide {
+  60% {
+    transform: translate(20px, 0) scale(1);
+    /*color: #b10e81;*/
+   color: #632629;
+  }
+  80% {
+    transform: translate(20px, 0) scale(1);
+    /*color: #b10e81;*/
+   color: black;
+  }
+  99% {
+    transform: translate(0) scale(1.2);
+    /*color: #00f0ff;*/
+   color: black;
+  }
+  100% {
+    transform: translate(0) scale(1);
+    opacity: 1;
+    /*color: #b10e81;*/
+   color: black;
+  }
+}
+/*签名留言按钮*/
+.flowerName{
+	opacity: 0;
+	animation: 1.5s driveInBottom 1.5s ease-in-out forwards;
+}
+/*祭祀献花按钮*/
+.flowerJs{
+	opacity: 0;
+	animation: 1.5s driveInBottom 1.7s ease-in-out forwards;
+}
+/*碗*/
+.bowl img {
+	opacity: 0;
+	animation: 1.5s zoomIn 1.7s ease-in-out forwards;
+}
+
+.bowl {
+	/*animation: 5s bowlShake ease-in-out infinite alternate;*/
+}
+
+/*碗*/
+@keyframes bowlShake {
+  0% {
+    transform: skewX(10deg);
+  }
+  50% {
+    transform: skewX(0deg);
+  }
+  100% {
+    transform: skewX(10deg);
+  }
+}
+
+/*黑烟*/
+.smoke img {
+	opacity: 0;
+	animation: 1.5s bounceInRight 2s ease-in-out forwards;
+}
+
+/*签名页面*/
+.penWide img{
+	opacity: 0;
+	animation: 1.5s flipInX 0.3s ease-in-out forwards;
+}
+.penColor img{
+	opacity: 0;
+	animation: 1.5s flipInX 0.4s ease-in-out forwards;
+}
+.penAgain img{
+	opacity: 0;
+	animation: 1.5s flipInX 0.5s ease-in-out forwards;
+}
+.penSave img{
+	opacity: 0;
+	animation: 1.5s flipInX 0.6s ease-in-out forwards;
+}
+.penSee img{
+	opacity: 0;
+	animation: 1.5s flipInX 0.7s ease-in-out forwards;
+}
+
+/*返回*/
+.back img {
+	opacity: 0;
+	animation: 1.5s rotateIn 0.3s ease-in-out forwards;
+}
+
+/*献花*/
+.flowerLeft img {
+	opacity: 0;
+	animation: 1.5s bounceInLeft 0.1s ease-in-out forwards;
+}
+
+.flowerRight img {
+	opacity: 0;
+	animation: 1.5s bounceInRight 0.1s ease-in-out forwards;
+}
+
+.bow img {
+	opacity: 0;
+	animation: 1.5s popInBottom 0.5s ease-in-out forwards;
+}
+
+.flowerB img {
+	opacity: 0;
+	animation: 1.5s popInBottom 0.6s ease-in-out forwards;
+}
+
+/*按钮动画*/
+.myBtn{
+	font-size: 113px;
+	animation: stripes-move 3s linear 0s infinite normal;
+	background: repeating-linear-gradient(45deg, #f6af18 0, #403af6 1.37em, #f62c25 0.37em, transparent 0.25em, transparent 0.5em);
+	opacity: 0.15!important;
+	transition: color 0s;
+}
+@keyframes stripes-move {
+	0% {
+		background-position: 0em 0px;
+	}
+	100% {
+		background-position: 4em 0px;
+	}
+}
+.myBtn2{
+	font-size: 113px;
+	animation: stripes-move2 1.5s linear 0s infinite normal;
+	background: repeating-linear-gradient(45deg, #f6af18 0, #403af6 0.77em, #f62c25 0.37em, transparent 0.25em, transparent 0.5em);
+	opacity: 0.15!important;
+	transition: color 0s;
+}
+@keyframes stripes-move2 {
+	0% {
+		background-position: 0em 0px;
+	}
+	100% {
+		background-position: 130px 0px;
+	}
+}

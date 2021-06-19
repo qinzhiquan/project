@@ -1,0 +1,77 @@
+﻿/* 公共样式 */
+/* 禁止选择 */
+/* 禁止手机点击出现蓝条 */
+*{padding:0;margin:0;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;-khtml-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(255,0,0,0);-webkit-appearance:none}
+a{text-decoration:underline}
+li,ul{list-style:none}
+.clear{clear:both}
+
+/* 自定义动画 */
+/* 进场渐入 */
+@keyframes bodyFadein{
+	0%{opacity:0}
+	100%{opacity:1}
+}
+
+/* 内容开始 */
+body{position: relative; width: 100%; height: 100vh; overflow: hidden; opacity:0; animation:bodyFadein 1s ease forwards 1;}
+.pogoSlider img{width: 100%; height: 102%; margin-top: -1%;}
+.pogoSlider-nav{display: none;}
+
+/*common页面样式*/
+._waitPage{background:white; width:100%; height: 100vh; z-index:999999; position:absolute; top:0}
+iframe{width: 100%; height: 100vh; border: none;}
+
+/*待机页*/
+.organize-hearder{position: relative;}
+.organize-bg{width: 100%; height: 100vh; z-index: -10;}
+.organize-bg img{width: 100%; height: 100%; z-index: -10;}
+
+
+/*头部*/
+.organize-title{position: absolute; top: 6%; width: 100%; text-align: center;}
+.organize-title img{width: 30%;}
+.organize-lineTop{width: 100%; text-align: center; position: absolute; top: 11.5%;}
+
+/*集团总部*/
+.organize-headquarters{width: 100%; position: absolute; top: 21.5%;}
+.organize-list{width: 33.3%; float: left; text-align: center;}
+.organize-headquarters .leader img{width: 62%;}
+.organize-headquarters .section img{width: 36%;}
+.organize-headquarters .enterprice img{width: 36%;}
+
+/*中间线条*/
+.organize-lineCenter{width: 100%; position: absolute; top: 15.5%;}
+.organize-lineCenterLeft{float: left;}
+.organize-lineCenter .line02{text-align: center;}
+.organize-lineCenter .line03{text-align: left; position: absolute; right: 15.2%; top: 47%;}
+.organize-lineCenterLeft .organize-content1{float: left;}
+.organize-lineCenter-content1{display: flex; justify-content: center; width: 50%;}
+.organize-lineCenter-content1 img{padding: 6px;}
+    
+/*公司介绍*/
+.organize-company{width: 80%; position: absolute; top: 62%; background: orange; right: 0; display: flex; right:-304px}
+.organize-company-title{}
+.organize-company .home1{position: absolute; left: 12.5%;}
+.organize-company .home1 img{width: 80%;}
+.organize-company .home2{position: absolute; left: 62%;}
+.organize-company .home2 img{width: 80%;}
+.organize-company .home3{position: absolute; right: 6.8%;}
+.organize-company .home3 img{width: 80%;}
+
+/*公司介绍线条*/
+.organize-company-line{width: 78%; background: orange; position: absolute; bottom: 35%; right: -15.6%;}
+.organize-company-Bottomline{float: left; width: 33.3%; background: orange;}
+.organize-company-line .line01 img{position: absolute; left: 15.7%;}
+.organize-company-line .line02 img{position: absolute; right: 33.6%;}
+.organize-company-line .line03 img{position: absolute; right: 13.6%;}
+
+/*公司人员介绍*/
+.organize-company-person{position: absolute; width: 46%; right:13% ;bottom: 41.8%;}
+.organize-company-personLeft{display: flex; justify-content: center; float: left; text-align: center; }
+.organize-company-personLeft:nth-child(1){position: absolute; left: 1%;}
+.organize-company-personLeft:nth-child(2){position: absolute; left: 62%;}
+.organize-company-personLeft:nth-child(3){position: absolute; right: 11.1%;}
+.organize-company-personLeft img{width: 80%;}
+.organize-personLeft-content2{margin: 0 5px; width: 20%;}
+.organize-personLeft-content2 img{width: 100%;}

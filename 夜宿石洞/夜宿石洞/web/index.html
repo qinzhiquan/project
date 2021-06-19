@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>夜宿石洞</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/vivify.css" />
+		<link rel="stylesheet" href="css/animate.css" />
+	</head>
+	<body>
+		<!--星星-->
+		<div class="container"></div>
+
+		<!--依次为背景图、右上角标题-->
+		<div class="rockBg"><img src="img/bg.jpg" draggable="false"/></div>
+		<!--猴子动效-->
+		<div class="MonkeyAnimate"><img src="img/monkey/1.png" id="MonkeyAnimate" data-length=2 draggable="false" /></div>
+		<div class="rockRop">
+			<div class="spinLogo1"><img src="img/title_01.png" draggable="false"/></div>
+			<div class="spinLogo"><img src="img/title_02.png" draggable="false"/></div>
+			<!--<img src="img/topTitle.png" draggable="false"/>-->
+			<div class="loading loading07 rockBig">
+				<span data-text="国">国</span>
+				<span data-text="家">家</span>
+				<span data-text="动">动</span>
+				<span data-text="物">物</span>
+				<span data-text="博">博</span>
+				<span data-text="物">物</span>
+				<span data-text="馆">馆</span>
+				<span data-text="白">白</span>
+				<span data-text="头">头</span>
+				<span data-text="叶">叶</span>
+				<span data-text="猴">猴</span>
+				<span data-text="馆">馆</span>
+			</div>
+			<div class="loading loading07 rockLittle">
+				<span data-text="WHITE-">WHITE-</span>
+				<span data-text="HEADED">HEADED</span>
+				<span data-text="LANGUR">LANGUR</span>
+				<span data-text="BRANCH">BRANCH</span>
+				<span data-text="OF">OF</span>
+				<span data-text="NATIONAL">NATIONAL</span>
+				<span data-text="ZOOLOGICAL">ZOOLOGICAL</span>
+				<span data-text="MUSEUM">MUSEUM</span>
+			</div>	
+		</div>
+		
+		<!--周围的树干-->
+		<div class="rockTree">
+			<div class="rockTreeLeft"><img src="img/leftTree.png" draggable="false"/></div>
+			<div class="rockTreeRight"><img src="img/rightTree.png" draggable="false"/></div>
+			<div class="rockTreeBottom"><img src="img/bottomTree.png" draggable="false"/></div>
+		</div>	
+		
+		<!--内容-->
+		<div class="rockContent">
+			<!--大标题以及小标题-->
+			<div class="rockBigTitle"><img src="img/bigTitle.png" draggable="false"/></div>
+			<div class="rockRotate">
+				<!--<img src="img/rotate.png" draggable="false"/>-->
+				<span></span>
+				<span></span>
+			</div>
+			<div class="rockLitleTitle">
+				<img src="img/litleTitle.png" draggable="false"/>
+			</div>
+		</div>
+		
+		<!--监控与回放按钮-->
+		<div class="btnAll">
+			<div class="btnWatch" id="btnWatch">监 控</div>
+			<a href="video.html"><div class="btnBack">回 放</div></a>
+		</div>
+		
+		<!--请稍后提示框-->
+		<div class="watchTip" id="watchTip">
+			<div class="watchStay">
+				正在启动监控系统，请稍后 ...
+			</div>
+		</div>
+		
+	</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/TweenMax.min.js"></script>
+	<script src="js/index.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="js/common.js" ></script>
+	<script type="text/javascript" src="js/img-animation.js" ></script>
+	<script type="text/javascript" src="js/invoke.js" ></script>
+	<script type="text/javascript" src="../app.config.js" ></script>
+	
+	<script>
+		$(document).ready(function(){
+			//监控
+			$('#btnWatch').click(function (){
+				openApp(startCommand);
+				
+				//请稍后提示框
+				$('#watchTip').show();
+
+				//7秒后隐藏提示框
+				window.setTimeout(function () {
+					$('#watchTip').hide();
+				}, 7000);
+			})
+			
+			
+			
+			var arrTimes = [12000, 3000, 8000, 6000];
+			var Monkey = new ImgAnimation($('#MonkeyAnimate'), 1000);
+			// 右边猴子动画
+			waterMonkey();
+			function waterMonkey(){
+				Monkey.play();
+				window.setTimeout(monkeyStop, 1000)   //*秒执行monkeyStop函数，停止动画
+				
+				function monkeyStop(){
+					Monkey.stop();
+				}
+				
+				var num = Math.floor((Math.random() * 4) + 1); //Math.floor 向下取整,4为长度
+				window.setTimeout(waterMonkey, arrTimes[num - 1])  //*秒执行一次动画
+			}
+		})
+	</script>
+</html>

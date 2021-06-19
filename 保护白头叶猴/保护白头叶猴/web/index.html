@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>保护白头叶猴</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/vivify.css" />
+		<link rel="stylesheet" href="css/animate.css" />
+	</head>
+
+	<body>
+		<!--依次为背景图、头部logo与头部右边树叶-->
+		<div class="roadBg"><img src="img/bg.jpg" draggable="false" /></div>
+		<div class="roadRop">
+			<div class="spinLogo1"><img src="img/title_01.png" draggable="false" /></div>
+			<div class="spinLogo"><img src="img/title_02.png" draggable="false" /></div>
+			<div class="loading loading02 loadBig">
+				<span>国</span>
+				<span>家</span>
+				<span>动</span>
+				<span>物</span>
+				<span>博</span>
+				<span>物</span>
+				<span>馆</span>
+				<span>白</span>
+				<span>头</span>
+				<span>叶</span>
+				<span>猴</span>
+				<span>馆</span>
+			</div>
+			<div class="loading loading02 loadLitle">
+				<span>WHITE-</span>
+				<span>HEADED</span>
+				<span>LANGUR</span>
+				<span>BRANCH</span>
+				<span>OF</span>
+				<span>NATIONAL</span>
+				<span>ZOOLOGICAL</span>
+				<span>MUSEUM</span>
+			</div>
+			<!--<img src="img/title.png" draggable="false"/>-->
+		</div>
+		<div class="roadTopTree"><img src="img/topTree.png" draggable="false" /></div>
+
+		<!--内容-->
+		<div class="roadTitle">
+			<!--大标题保护之路-->
+			<div class="roadContent loading">
+				<span class="roadBao roadProtect" data-text="保">保</span>
+				<span class="roadHu roadProtect" data-text="护">护</span>
+				<span class="roadZhi roadProtect" data-text="之">之</span>
+				<span class="roadLu roadProtect" data-text="路">路</span>
+			</div>
+
+			<!--保护之路的英文-->
+			<div class="baoHuTitle loading">
+				<span data-text="THE">THE</span>
+				<span data-text="WAY">WAY</span>
+				<span data-text="TO">TO</span>
+				<span data-text="PROTECT">PROTECT</span>
+				<!--<img src="img/baoHuTitle.png" draggable="false"/>-->
+			</div>
+
+			<!--依次为中间线条、保护野生动物就是保护人类自己以及它的英文-->
+			<div class="roadContentTitle">
+				<div class="roadLine"><img src="img/line.png" draggable="false" /></div>
+				<div class="roadTitleBottom loading loading07">
+					<span data-text="保">保</span>
+					<span data-text="护">护</span>
+					<span data-text="野">野</span>
+					<span data-text="生">生</span>
+					<span data-text="动">动</span>
+					<span data-text="植">植</span>
+					<span data-text="物">物</span>
+					<span data-text="就">就</span>
+					<span data-text="是">是</span>
+					<span data-text="保">保</span>
+					<span data-text="护">护</span>
+					<span data-text="人">人</span>
+					<span data-text="类">类</span>
+					<span data-text="自">自</span>
+					<span data-text="己">己</span>
+				</div>
+				<!--<img src="img/title1.png" draggable="false"/>-->
+			</div>
+			<div class="roadTitleBottom1 loading loading08">
+				<span data-text="TO">TO</span>
+				<span data-text="PROTECT">PROTECT</span>
+				<span data-text="WILD">WILD</span>
+				<span data-text="ANIMALS">ANIMALS</span>
+				<span data-text="AND">AND</span>
+				<span data-text="AND">AND</span>
+				<span data-text="IS">IS</span>
+				<span data-text="TO">TO</span>
+				<span data-text="PROTECT">PROTECT</span>
+				<span data-text="OURSELVERS">OURSELVERS</span>
+				<!--<img src="img/title2.png" draggable="false"/>-->
+			</div>
+		</div>
+		</div>
+
+		<!--底部-->
+		<div class="roadTree">
+			<!--依次为底部左边的石头、树叶和猴子-->
+			<div class="roadLeftBottom">
+				<div class="roadLeftRock"><img src="img/leftRock.png" draggable="false" /></div>
+				<div class="roadTreeLeft"><img src="img/leftTree.png" draggable="false" /></div>
+				<div class="roadMonkey"><img id="roadMonkey" src="img/monkeyGroup/1.png" data-length=6 draggable="false" /></div>
+			</div>
+
+			<!--依次为底部右边的石头以及树叶-->
+			<div class="roadRightBottom">
+				<div class="roadRightRock"><img src="img/rightRock.png" draggable="false" /></div>
+				<div class="roadTreeRight"><img src="img/rightTree.png" draggable="false" /></div>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="js/img-animation.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script>
+		// 猴子吃叶子动画
+		window.setTimeout(function (){
+			new ImgAnimation($("#roadMonkey"), 380).play();
+		}, 2000);
+		
+		$(document).ready(function(){
+			$('.roadContent').addClass('loading06').show(1000,function(){
+				$('.baoHuTitle').addClass('loading06');
+			});
+		})
+
+	</script>
+
+</html>

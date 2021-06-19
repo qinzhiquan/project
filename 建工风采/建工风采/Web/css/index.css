@@ -1,0 +1,89 @@
+﻿/* 公共样式 */
+/* 禁止选择 */
+/* 禁止手机点击出现蓝条 */
+*{padding:0;margin:0;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;-khtml-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(255,0,0,0);-webkit-appearance:none}
+a{text-decoration:underline}
+li,ul{list-style:none}
+.clear{clear:both}
+
+/* 自定义动画 */
+/* 进场渐入 */
+@keyframes bodyFadein{
+	0%{opacity:0}
+	100%{opacity:1}
+}
+
+/* 内容开始 */
+body{position: relative; width: 100%; height: 100vh; overflow: hidden; opacity:0; animation:bodyFadein 1s ease forwards 1;}
+.pogoSlider img{width: 100%; height: 102%; margin-top: -1%;}
+.pogoSlider-nav{display: none;}
+
+/*common页面样式*/
+._waitPage{background:white; width:100%; height: 100vh; z-index:999999; position:absolute; top:0}
+iframe{width: 100%; height: 100vh; border: none;}
+
+/*待机页*/
+.projectHall-hearder{position: relative;}
+.projectHall-bg{width: 100%; height: 100vh; z-index: -10;}
+.projectHall-bg img{width: 100%; height: 100%; z-index: -10;}
+
+
+/*头部*/
+.projectHall-Top{position: absolute;top: 0;}
+.proTop{float: left;}
+.projectHall-lightLeft{z-index: 10;}
+.projectHall-star{position: absolute; top: 0; width: 100%; z-index: 2;}
+.projectHall-star img{width: 100%;} 
+.projectHall-title{width: 50%; padding: 10px;}
+.projectHall-title img{width: 100%;}
+
+
+/*头部标题*/
+.projectHall-TopTitle{width: 100%; position: absolute; top: 15%;}
+.projectHall-logo{width: 100%; text-align: center;}
+.projectHall-bigTitle{width: 100%; text-align: center;}
+.projectHall-litleTitle{width: 100%; text-align: center;}
+.projectHall-logo img{width: 5%;}
+.projectHall-bigTitle img{width: 33%;}
+.projectHall-litleTitle img{width: 33%;}
+
+
+/*大标题*/
+.projectHall-BigTitle{width: 100%; position: absolute; top: 30%; text-align: center;}
+.projectHall-spot{width: 100%; z-index: 1;}
+.projectHall-spot img{width: 100%; opacity: 0.3;}
+.projectHall-wingTitle{margin: auto; position: absolute; top: 25%; text-align: center; left: 18.2%; right: 18.2%;}
+.projectHall-wingLeft{float: left;}
+.projectHall-wingright{float: right;}
+.proT{float: left;}
+.proT img{width: 150px;}
+.proWing img{width: 250px;}
+
+
+/*按钮*/
+.projectHall-btn{position: absolute; top: 50%; width: 100%; text-align: center;}
+.projectHall-btn .btnList{width: 14%; display: inline-block; margin: 10px;}
+.projectHall-btn .btnList img{width: 100%;}
+
+
+/*底部*/
+.projectHall-bottom{width: 100%; position: fixed; bottom: -5px; z-index: 5;}
+
+
+/*返回按钮*/
+.Maiopc-back{width:100%; text-align: center; position: fixed; bottom: 10px; z-index: 1000;}
+.Maiopc-back img{width: 5%; z-index: 1000;}
+
+
+/*nav页面*/
+/*头部开始*/
+.projectHall-logoTitle{position: absolute; left: 8%; top: 5%; z-index: 5;}
+.projectHall-logoTitle img{width: 85%;}
+
+/*大标题*/
+.projectHall-wingTitle-nav{margin: auto; position: absolute; top: -10%; text-align: center; left: 18.2%; right: 18.2%;}
+
+/*返回*/
+.projectHall-back{width: 100%; position: fixed; bottom: 50px; z-index: 10; }
+.btn-back{width: 96%; text-align: right;}
+.projectHall-back img{width: 5%;}

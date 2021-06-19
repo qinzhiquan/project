@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="../css/discern.css">
+   
+</head>
+<body>
+    <div class="main" id="main">
+    	<!--识别对比两旁的星星-->
+    	 <div class="discernLeftStar"><img src="../img/btn/science/leftStar.png" draggable="false"/></div>
+    	 <div class="discernRightStar"><img src="../img/btn/science/rightStar.png" draggable="false"/></div>
+
+        <!--树-->
+        <img alt="" class="tree" src="../img/tree.png"/>
+        <!--阴影树-->
+        <img alt="" class="tree2" src="../img/tree2.png"/>
+        <!--白云-->
+        <img alt="" class="cloud1" src="../img/cloud1.png"/>
+        <img alt="" class="cloud2" src="../img/cloud2.png"/>
+        <!--前边叶子-->
+        <img alt="" class="leaf" src="../img/leaf.png"/>
+        <!--边框-->
+        <img alt="" class="border" src="../img/bg2.png"/>
+
+        <!--头部人脸识别图片-->
+        <!--<header>-->
+            <!--<img alt="" src="../img/btn/discern/discern.png">-->
+        <!--</header>-->
+        <img class="headerImg" alt="" src="../img/btn/discern/discern.png">
+        
+        <!--背景框-->
+        <div class="background_science">
+        	<div class="background_brown">
+        		<img src="../img/btn/discern/background.png" draggable="false"/>
+        	</div>
+        </div>
+
+        <!--左边猴子列表-->
+        <div class="leftMonkeyListBox monkeyListBox">
+            <div class="monkeyList monkeyListLeft">
+            </div>
+        </div>
+
+        <!--中间拍照框-->
+        <div class="setPhoto">
+            <img class="photoBorder" src="../img/photoBorder.png">
+            <canvas id="canvas" width="600" height="510"></canvas>
+            <video id="audio" width="600" height="510" autoplay></video>
+            <img class="count" id="count" alt="" src="../img/btn/discern/timer/title.png" />
+            <!--对比重拍按钮-->
+            <img class="submit" alt="" src="../img/btn/discern/submit.png">
+            <!-- <img class="reset" alt="" src="../img/btn/discern/reset.png"> -->
+        </div>
+        
+        <!--双向箭头-->
+        <div class="arrow_discern">
+        	<img src="../img/arrow.png" draggable="false"/>
+        </div>
+        
+        <!--右边猴子-->
+        <div class="monkeyRight">
+        	<img src="../img/btn/discern/photoBox.png" draggable="false"/>
+        </div>
+
+        <!--右边猴子列表-->
+        <div class="monkeyListBox rightMonkeyListBox">
+            <div class="monkeyList monkeyListRight"></div>
+        </div>
+
+        <!--返回按钮-->
+        <img class="goBack" src="../img/btn/goBack.png"/>
+    </div>
+
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <!--公用动画-->
+    <script src="../js/animate.js"></script>
+    <script>
+		let recorder;
+		// 判断是否已拍照
+		let isPhoto = false;
+		// 猴子图片名称,传入下一个页面
+		let monkeyImgNumber;
+		let video = document.getElementById('audio');
+		let canvas = document.getElementById('canvas');
+		let context = canvas.getContext('2d');
+
+        $(function () {
+            // // 动态添加猴子图片
+            let result = CsszUtils.getFile("web\\data\\img\\monkeyFace");
+            // //获取所有图片数组
+            if(result){
+                result = result.split(',');
+            }
+
+            // 分割左右猴子图片列表
+            let leftImgList = [];
+            let rightImgList = [];
+            for(let i =0; i<result.length; i++) {
+                if(i % 2 === 0){
+                    leftImgList.push(result[i])
+                } else {
+                    rightImgList.push(result[i])
+                }
+            }
+
+            // 遍历图片数组添加图片左列表
+            let leftHtml = '';
+            leftImgList.forEach(function (item) {
+                leftHtml +=
+                    `<div class="monkeyBox">
+                        <div class="monkeyBorder">
+                        <div class='${item}' alt="" style="background-image: url('../../Web/data/img/monkeyFace/${item}');background-size: cover" ></div>
+                        </div>
+                        <button>${item.split('-')[1].split('(')[0]} <span class="selectImg"> ✔</span></button>
+                    </div>
+                    `
+            })
+            leftHtml += leftHtml;
+            $('.monkeyListLeft').html(leftHtml)
+
+            // 遍历图片数组添加图片右列表
+            let rightHtml = ''
+            rightImgList.forEach(function (item) {
+                rightHtml +=  `
+                       <div class="monkeyBox" onclick="scrollToLocation(this)">
+                            <div class="monkeyBorder">
+                                <div class='${item}' alt="" style="background-image: url('../../Web/data/img/monkeyFace/${item}')" ></div>
+                            </div>
+                            <button>${item.split('-')[1].split('(')[0]} <span class="selectImg"> ✔</span></button>
+                        </div>
+                    `
+            })
+            rightHtml += rightHtml
+            $('.monkeyListRight').html(rightHtml)
+
+			// 对比按钮
+			$('.submit').click(function () {
+                clearInterval(countdownId);
+                roll()
+			})
+			// 返回按钮
+			$('.goBack').click(function () {
+			        pageJump('#main',`../index.html`)
+			    }
+			)
+        })
+
+		// 初始化摄像头
+		init();
+		// 开始定时返回首页（待机页面）
+		timesBack();
+		// 初始化调用摄像头
+		function init() {
+		    let videoTarget = document.getElementById('audio');
+		    navigator.mediaDevices.getUserMedia({
+		        audio: true,
+		        video: {
+		            width: 600,
+		            height: 510
+		        }
+		    })
+			.then((stream) => {
+				recorder = new MediaRecorder(stream);
+				videoTarget.srcObject = stream;
+				videoTarget = (...arg) => {
+					console.log(arg);
+				}
+				recorder.ondataavailable = (event) => {
+					let url = URL.createObjectURL(event.data);
+					let link = document.createElement("a");
+					link.target = "_blank";
+					link.href = url;
+					link.click();
+				}
+			});
+		}
+		
+		// 拍照
+		function photo() {
+		    context.drawImage(video, 0, 0, 600, 510);
+		}
+
+        let countdownId;
+        //点击猴子照片
+        function countdown(obj) {
+            // 获取所点击照片名字
+            monkeyImgNumber = $(obj).children('div').eq(0).children('div').eq(0).attr('class');
+            // 移除猴子列表图片边框
+            $('.monkeyBox').removeClass('imgSelected');
+
+            // 给所点击图片加边框
+            $(obj).addClass('imgSelected')
+            // 移除猴子列表图片打勾
+            $('.monkeyBox').find('span:eq(0)').removeClass("selectedImg");
+            // 给所点击图片按钮加打勾
+            $(obj).find('span:eq(0)').addClass("selectedImg");
+
+            $('#audio').show();
+            $('#count').show();
+            // 倒计时数
+            let countdown = 5;
+            context.clearRect(0,0,600,510);
+            $('#count').attr('src','../img/btn/discern/timer/title.png');
+            clearInterval(countdownId);
+            countdownId = setInterval(function (){
+                if (countdown <= 0) {
+                    photo();
+                    $('#audio').hide();
+                    $('#count').hide();
+                    $('#count').attr('src','../img/btn/discern/timer/title.png')
+                    $('#canvas').css({'display':'block'})
+                    clearInterval(countdownId);
+                    // 定时1秒后跳转至对比报告
+                    photoTimer = window.setTimeout(function (){
+                        // 拍照图片数据 1表示质量(无损压缩)
+                        let data = canvas.toDataURL('image/png', 1);
+                        pageJump('#main',`comparisonLoad.html?monkeyImgNumber=${monkeyImgNumber}&imgSrc=${data}`);
+                    }, 1000);
+                }
+                $('#count').attr('src','../img/btn/discern/timer/' + countdown + '.png');
+                // 播放音效
+                CsszUtils.playMusic("web//music//" + countdown + ".mp3|1");
+                countdown--;
+            }, 1000);
+        }
+		// 滚动至随机选中猴子的位置
+		// function scrollToSelectLocation() {
+		// 	var eleArrary = $(".monkeyBox");
+		// 	// 根据猴子数量获取随机数
+		// 	var num = getRandomNum(0, eleArrary.length);
+		// 	// 随机抽取得到的猴子元素对象
+		// 	let obj = $(eleArrary).eq(num);
+		// 	// 滚动至随机抽取到的猴子元素
+		// 	obj.parent().parent().animate({scrollTop: obj.position().top}, 500, function (){
+		// 		countdown(obj);
+		// 	});
+		// }
+		// 获取随机数函数
+		function getRandomNum(min, max) {
+		  return Math.floor(Math.random() * (max - min)) + min   
+		}
+
+		// 猴子列表滚动函数
+        function roll() {
+            // 获取滚动高度
+            let monkeyListHeight = (document.getElementsByClassName('monkeyList')[0].offsetHeight-
+                document.getElementsByClassName('monkeyListBox')[0].offsetHeight) / 2;
+            ;
+            // 猴子列表滚动一次时间
+            let rollTime = 500;
+            $('.monkeyList').css('top','0');
+            $('.monkeyList').stop(true,false).animate({'top' : -monkeyListHeight + 'px'} , rollTime)
+                .promise().then(function() {
+                    $('.monkeyList').css('top','0');
+                $('.monkeyList').stop(true,false).animate({'top' : -monkeyListHeight + 'px'} , rollTime)
+                    .promise().then(function() {
+                    $('.monkeyList').css('top','0');
+                    $('.monkeyList').stop(true,false).animate({'top' : -monkeyListHeight + 'px'} , rollTime)
+                        .promise().then(function() {
+                        $('.monkeyList').css('top','0');
+                        $('.monkeyList').stop(true,false).animate({'top' : -monkeyListHeight + 'px'} , rollTime)
+                            .promise().then(function() {
+                            $('.monkeyList').css('top','0');
+                            $('.monkeyList').stop(true,false).animate({'top' : -monkeyListHeight + 'px'} , 1000)
+                                .promise().then(function() {
+                                $('.monkeyList').css('top','0');
+                                    var eleArrary = $(".monkeyBox");
+                                    // 根据猴子数量获取随机数
+                                    var num = getRandomNum(0, eleArrary.length);
+
+                                    // 随机抽取得到的猴子元素对象
+                                    let obj = $(eleArrary).eq(num);
+                                    // 判断是否是选择顶层第一个
+                                    if(num === 0 || num === 1){
+                                        $('.monkeyList').stop(true,false).animate({top: -obj.position().top + 'px'}, 2000, function (){
+                                            countdown(obj);
+                                        });
+                                    }else if(num === eleArrary.length /2 - 1 || num === eleArrary.length - 1){  // 判断是否是选择最后一个
+                                        $('.monkeyList').stop(true,false).animate({top: -obj.position().top + 350 + 'px'},2000, function (){
+                                            countdown(obj);
+                                        });
+                                    }
+                                    else{
+                                        $('.monkeyList').stop(true,false).animate({top: -obj.position().top + 175 + 'px'},2000, function (){
+                                            countdown(obj);
+                                        });
+                                    }
+                                    // 滚动至随机抽取到的猴子元素
+                            });
+                        });
+                    });
+                });
+            });
+        }
+    </script>
+
+    <script src="../js/move.js"></script>
+</body>
+</html>

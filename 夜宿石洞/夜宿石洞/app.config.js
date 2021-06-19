@@ -1,0 +1,1 @@
+let startCommand = "C:\\Program Files\\iVMS-4200 Station\\iVMS-4200\\iVMS-4200 Client\\iVMS-4200.exe"

@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0013)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link href="css/video-js.min.css" rel="stylesheet" />
+		<link href="css/video.css" rel="stylesheet" />
+	</head>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		
+		.video-js {
+			width: 100% !important;
+			height: 100vh !important;
+		}
+	</style>
+
+	<body id="_body">
+		<!--返回-->
+		<div class="Maiopc-back"><img src="img/back.png" draggable="false" onclick="back()" /></div>
+
+		<!--视频-->
+		<div class="videoBox">
+			<video id="my-video" class="video-js" preload="auto" poster="" data-setup="{}" controls="controls" autoplay="autoplay"></video>
+		</div>
+
+		<!--选中的视频-->
+		<div id="selectVideo" class="selectVideo">
+			<div class="videoTitle">视频</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/video.min.js"></script>
+	<script src="js/invoke.js"></script>
+	<script type="text/javascript">
+		var root = "data/video/";
+		//获取这个目录下的所有文件名称
+		var path = 'web/data/video/';
+		var videoData = getFile(path);
+		// var videoData = '视频111111.mp4,视频22.mp4';
+
+		//分割每个视频名称
+		videoData = videoData.split(',');
+		
+		//渲染按钮
+		for(i in videoData) {
+			var item = videoData[i].split('.');
+			$('#selectVideo').append("<div class='videoIcon' name='videoIcon' data-index='" + i + "'><img src = 'img/stop.png' id='IconStop' class='IconStop'/><div class='btn'><span>" + item[0] + "</span></div></div>");
+		}
+
+		var video = videojs('my-video');
+		videojs("my-video").ready(function() {
+			var video = this;
+			//默认播放第一个视频与第一个视频的字体颜色为绿色，图片为暂停图片
+			playVideo(0);
+			$('#selectVideo').find('img').eq(0).attr('src','img/play.png');
+			$('#selectVideo').find('span').eq(0).css({'color': '#02BE06'});
+		})
+
+		//判断点击哪个视频
+		$('div[name=videoIcon]').click(function() {
+			var videoIndex = $(this).attr("data-index");
+			//白色字体与暂停播放图片
+			$('#selectVideo').find('span').css({'color': 'white'});
+			$('#selectVideo').find('img').attr('src','img/stop.png')
+			
+			//相对应字体为绿色与播放播放图片
+			$(this).find('span').css({'color': '#02BE06'});
+			$(this).find('img').attr('src','img/play.png')
+			if(!videoIndex) {
+				return;
+			}
+
+			// 根据引索播放视频
+			playVideo(videoIndex);
+		})
+
+		// 播放
+		function playVideo(videoIndex) {
+			var videoSrc = root + videoData[videoIndex];
+			video.src(videoSrc);
+			video.load(videoSrc);
+			video.play();
+		}
+
+		// 返回
+		function back() {
+			window.location.href = "index.html"
+		}
+	</script>
+
+</html>

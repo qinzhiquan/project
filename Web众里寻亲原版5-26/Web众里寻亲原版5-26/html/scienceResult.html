@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="../css/scienceResult.css">
+    
+</head>
+<body>
+<div class="main" id="main">
+	<!--识别对比两旁的星星-->
+	<div class="discernLeftStar"><img src="../img/btn/science/leftStar.png" draggable="false"/></div>
+	<div class="discernRightStar"><img src="../img/btn/science/rightStar.png" draggable="false"/></div>
+    <!--树-->
+    <img alt="" class="tree" src="../img/tree.png"/>
+    <!--阴影树-->
+    <img alt="" class="tree2" src="../img/tree2.png"/>
+    <!--白云-->
+    <img alt="" class="cloud1" src="../img/cloud1.png"/>
+    <img alt="" class="cloud2" src="../img/cloud2.png"/>
+    <!--前边叶子-->
+    <img alt="" class="leaf" src="../img/leaf.png"/>
+    <!--边框-->
+    <img alt="" class="border" src="../img/bg2.png"/>
+
+    <!--头部图片样式-->
+    <img class="headerImg" alt="" src="../img/btn/science/science.png">
+
+    <!--monkey科普边框-->
+    <img alt="" class="contentBox" src="../img/btn/science/contentBox.png">
+    <!--猴子图片边框-->
+    <img alt="" class="monkeyImgBg" src="../img/monkeyImgBg.png">
+    <!--猴子图片-->
+    <img alt="" class="monkeyImg" src="../data/img/monkeyFace/001-黑猩猩(Eruditio%20aemulativa).jpg">
+    <!--猴子底部名称-->
+    <p class="monkeyNameBtn">
+    	<span>名</span>称：黑猩猩
+    </p>
+    <!--猴子底部拉丁文名称-->
+    <p class="monkeyLatineNameBtn">
+    	英文名称：Pan troglodytes
+    </p>
+    <!--猴子科普文本边框-->
+    <div class="monkeyTxtBox">
+        <!--猴子科普文本-->
+        <div class="monkeyTxt">
+            暂无数据
+        </div>
+    </div>
+
+    <!--返回首页按钮-->
+    <img class="goMenu" src="../img/btn/goMenu.png"/>
+</div>
+<script src="../js/jquery-1.11.1.min.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/animate.js"></script>
+<script>
+    $(function () {
+    	// 返回首页
+        $('.goMenu').click(function () {
+                pageJump('#main',`discern.html`)
+            }
+        )
+        // 猴子图片名称
+        let monkeyImgNumber = '';
+        if(window.location.href.split('monkeyImgNumber=')[1]){
+            monkeyImgNumber = getUrlParam('monkeyImgNumber')
+        }
+        $('.monkeyImg').attr('src',`../data/img/monkeyFace/${monkeyImgNumber}`)
+
+        /*
+        * 猴子科普文本
+        * */
+        if(monkeyImgNumber.split('-')[1].split('.')[0]){
+            // 猴子名称带编号前缀,方便获取科普文本
+            let monkeyName = monkeyImgNumber.split('.')[0];
+            // 科普文本文件路径
+            let pathName = `web\\data\\text\\${monkeyName}.txt`
+            let monkeyTxt = CsszUtils.getContent(pathName);
+            // 给文本分段
+            monkeyTxt = monkeyTxt.split('/p');
+            // 插入页面的文本
+            let inserTxt = '';
+            monkeyTxt.forEach(function (item) {
+                inserTxt += `<p>${item}</p>`
+            })
+            $('.monkeyTxt').html(inserTxt)
+
+        }
+
+        // 猴子名称
+        if(monkeyImgNumber.split('-')[1].split('.')[0]){
+            $('.monkeyName').text(monkeyImgNumber.split('-')[1].split('(')[0])
+            $('.monkeyNameBtn').text(monkeyImgNumber.split('-')[1].split('(')[0])
+            $('.monkeyLatineNameBtn').text(monkeyImgNumber.split('(')[1].split(')')[0])
+        }
+    })
+</script>
+<script src="../js/scienceResultMove.js"></script>
+</body>
+</html>

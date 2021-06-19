@@ -1,0 +1,169 @@
+
+* {
+	margin: 0;
+	padding: 0;
+		/* 禁止选择 */
+	-moz-user-select: none;
+	/*火狐*/
+	-webkit-user-select: none;
+	/*webkit浏览器*/
+	-ms-user-select: none;
+	/*IE10*/
+	-khtml-user-select: none;
+	/*早期浏览器*/
+	user-select: none;
+	/* 禁止手机点击出现蓝条 */
+	-webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+	-webkit-appearance: none;
+	overflow: hidden;
+}
+
+/*大标题*/
+.flowerTitle {
+	position: absolute;
+	top: 4%;
+	left: 4%;
+}
+
+/*内容*/
+.flowerContent {
+	position: absolute;
+	top: 23%;
+	left: 5%;
+	right: 5%;
+	text-align: center;
+}
+
+
+/*碗筷*/
+.bowl {
+	position: absolute;
+	left: 0%;
+	bottom: 6%;
+}
+
+.smoke {
+	position: absolute;
+	right: 0;
+	bottom: -20px;
+}
+/*鸟*/
+.bird{
+	position: absolute;
+	right: 7%;
+	top: 7%;
+	opacity: 0;
+}
+/*左边花圈*/
+.flowerLeft {
+	position: absolute;
+	top: 30%;
+	left: 8%;
+}
+
+/*右边花圈*/
+.flowerRight {
+	position: absolute;
+	top: 30%;
+	right: 8%;
+}
+
+/*按钮*/
+
+.bow {
+	position: absolute;
+	bottom: 19%;
+	right: 2%;
+	z-index: 1;
+}
+
+.flowerB {
+	position: absolute;
+	bottom: 11%;
+	right: 2%;
+	z-index: 1;
+}
+
+.contentBg {
+	position: absolute;
+	top: 12%;
+	left: 2%;
+	right: 2%;
+	text-align: center;
+}
+
+.contentBtn {
+	position: absolute;
+	bottom: 2%;
+	text-align: center;
+	width: 100%;
+	z-index: 3;
+}
+
+.back {
+	position: absolute;
+	bottom: 3%;
+	right: 4%;
+	z-index: 10;
+}
+
+.backFlower {
+	position: absolute;
+	bottom: 1%;
+	right: 4.5%;
+}
+
+/*签名页面*/
+.contentPen {
+	display: inline-block;
+	margin: 0 1.2%;
+}
+
+/*祭祀英雄的花*/
+.flowerCenter {
+	width: 100%;
+	display: none;
+	
+}
+
+.flowerCenter img {
+	position: absolute;
+	top: 67.5%;
+	left: 46%;
+	width: 8%;
+}
+
+/*人数*/
+.flowerCount {
+	position: absolute;
+	right: 5.2%;
+	bottom: 22.2%;
+	width: 6%;
+	height: 4vh;
+	text-align: center;
+	line-height: 4vh;
+	font-size: 22px;
+	z-index: 2;
+	color: white;
+	animation: 1s fadeIn 0.3s ease-in-out forwards;
+	opacity: 0;
+}
+
+/*人数*/
+.flowerNumber {
+	text-align: center;
+}
+
+/*人物动画*/
+.flowerPerson {
+	width: 100%;
+	display: none;
+}
+
+.flowerPerson img {
+	position: absolute;
+	top: 32%;
+	width: 20%;
+	left: 40%;
+	animation: fadeIn ease-in-out forwards;
+}

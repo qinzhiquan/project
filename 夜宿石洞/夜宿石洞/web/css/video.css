@@ -1,0 +1,78 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.video-js {
+	width: 100% !important;
+	height: 100vh !important;
+}
+
+/*返回按钮*/
+.Maiopc-back {
+	width: 100%;
+	position: fixed;
+	bottom: 35px;
+	text-align: right;
+	z-index: 12;
+	right: 2.4%;
+}
+
+.Maiopc-back img {
+	width: 5%;
+}
+
+/*视频大标题*/
+.videoTitle {
+	font-size: 25px;
+	color: white;
+	padding: 10px;
+}
+
+.selectVideo {
+	width: 10%;
+	height: 52vh;
+	background: rgba(255,255,255,0.2);
+	position: absolute;
+	top: 18%;
+	font-size: 19px;
+	right: 0;
+	text-align: left;
+}
+
+.btn{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	margin: auto;
+   color: white;
+}
+
+.videoIcon img{
+	width: 10%;
+	position: absolute;
+	top: 32%;
+	left: 3px;
+}
+
+.videoIcon {
+	position: relative;
+	border-bottom: 1px solid gainsboro;
+}
+
+.btn span {
+	padding-left: 28px;
+}
+
+.btn:nth-child(1) {
+	margin-top: 30px;
+}
+
+/*视频左上角标识*/
+.video-js .vjs-big-play-button {
+	top: 45%;
+	left: 50%;
+}

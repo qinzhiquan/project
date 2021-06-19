@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/animate.css" />
+		<link rel="stylesheet" href="css/vivify.min.css" />
+		<link rel="stylesheet" href="css/animation.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>建工风采</title>
+	</head>
+
+	<body>
+		<!--头部开始-->
+		<div class="projectHall-hearder">
+			<!--背景与头部元素-->
+			<div class="projectHall-bg"><img src="img/bg.jpg" draggable="false"/></div>
+			<div class="projectHall-Top">
+				<div class="proTop projectHall-lightLeft"><img src="img/light_left.png" draggable="false"/></div>
+				<div class="proTop projectHall-logoTitle"><img src="img/logoTitle.png" draggable="false"/></div>
+				<div class="proTop projectHall-star"><img src="img/star.png" draggable="false"/></div>
+				<div class="proTop projectHall-lightRight"><img src="img/light_right.png" draggable="false"/></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<!--大标题-->
+		<div class="projectHall-BigTitle">
+			<div class="projectHall-spot"><img src="img/spot.png" draggable="false"/></div>
+			<div class="projectHall-wingTitle-nav text part1">
+				<div class="projectHall-wingLeft proWing"><img src="img/wing_left.png" draggable="false"/></div>
+				<span class="letter"><div class="projectHall-jian proT character"><img src="img/jian.png" draggable="false"/></div><span></span></span>
+				<span class="letter"><div class="projectHall-gong proT character"><img src="img/gong.png" draggable="false"/></div><span></span></span>
+				<span class="letter"><div class="projectHall-feng proT character"><img src="img/feng.png" draggable="false"/></div><span></span></span>
+				<span class="letter"><div class="projectHall-cai proT character"><img src="img/cai.png" draggable="false"/></div><span></span></span>
+				<div class="projectHall-wingright proWing"><img src="img/wing_right.png" draggable="false"/></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<!--底部元素-->
+		<div class="projectHall-bottom">
+			<div class="projectHall-starBottom"><img src="img/bottom.png" draggable="false"/></div>
+		</div>
+		
+		<!--按钮-->
+		<div class="projectHall-btn">
+			<div class="btnList btnBox1"><img src="btn/btn1.png" draggable="false" onclick="box1()"/></div>
+			<div class="btnList btnBox2"><img src="btn/btn2.png" draggable="false" onclick="box2()"/></div>
+		</div>
+		
+		<!--返回-->
+		<div class="projectHall-back">
+			<div class="btn-back"><img src="btn/back.png" draggable="false"/></div>
+		</div>
+	
+	</body>
+	<script src="js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$('.btn-back img').click(function(){
+			parent.closePage(function(e){
+				$(e).fadeIn(1000);
+			});
+		})
+		
+		function box2(){
+			openPage("video.html?name=第一书记", function(e) {
+				$('.btnBox2').addClass('backAnimate');
+			});
+		}
+
+		function box1(){
+			openPage("video.html?name=广西建工合唱比赛", function(e) {
+				$('.btnBox2').addClass('backAnimate');
+			});
+		}
+	</script>
+
+</html>

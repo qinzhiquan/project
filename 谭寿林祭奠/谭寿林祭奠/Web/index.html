@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>谭寿林签名、献花</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/vivify.css" />
+		<link rel="stylesheet" href="css/animate.css" />
+		<link rel="stylesheet" href="css/animation.css" />
+		<style>
+			.loading03>div{
+				margin: 0 -.075em;
+				animation: loading03 2.1s infinite alternate;
+			}
+			.loading03>div:nth-child(2) {
+				animation-delay: 0.3s;
+			}
+			.loading03>div:nth-child(3) {
+				animation-delay: 0.6s;
+			}
+			.loading03>div:nth-child(4) {
+				animation-delay: 0.9s;
+			}
+
+			@keyframes loading03 {
+				0% {
+					transform: scale(1);
+				}
+				100% {
+					transform: scale(0.8);
+				}
+			}
+
+			/*按钮*/
+			.flowerName {
+				position: absolute;
+				top: 60%;
+				left: 29.5%;
+				text-align: center;
+			}
+
+			.flowerJs {
+				position: absolute;
+				top: 60%;
+				right: 29.5%;
+				text-align: center;
+			}
+			.btn-2{
+				display: none;
+				position: absolute;
+				width: 244px;
+				height: 71px;
+				top: 60.5%;
+				left: 30%;
+			}
+			.btn-3{
+				position: absolute;
+				display: none;
+				width: 244px;
+				height: 71px;
+				top: 60.5%;
+				right: 30%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--背景图-->
+		<div class="heroBg">
+			<img src="img/bg.jpg" draggable="false" />
+		</div>
+
+		<!--内容-->
+		<div class="flowerContent loading03">
+			<div class="guan ContentTitle">
+				<img src="img/guan.png" draggable="false" />
+			</div>
+			<div class="zhong ContentTitle">
+				<img src="img/zhong.png" draggable="false" />
+			</div>
+			<div class="liu ContentTitle">
+				<img src="img/liu.png" draggable="false" />
+			</div>
+			<div class="yan ContentTitle">
+				<img src="img/yan.png" draggable="false" />
+			</div>
+		</div>
+
+		<!--签名留言按钮-->
+		<div class="flowerName">
+			<img src="img/7.png" draggable="false" />
+		</div>
+		<!--祭祀献花按钮-->
+		<div class="flowerJs">
+			<img src="img/8.png" draggable="false" />
+		</div>
+
+		<!--中华柱-->
+		<div class="bowl">
+			<img src="img/9.png" draggable="false" />
+		</div>
+		<!--红带-->
+		<div class="smoke">
+			<img src="img/10.png" draggable="false" />
+		</div>
+		<!--鸟-->
+		<div class="bird">
+			<img src="img/bird.png" draggable="false" />
+		</div>
+
+		<button class="myBtn btn-2"></button>
+		<button class="myBtn btn-3"></button>
+
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+
+	<script>
+		//跳转到个性签名页面
+		$('.btn-2').click(function() {
+			window.location.href = "signature.html"
+			})
+
+		//跳转到献花页面
+		$('.btn-3').click(function() {
+			window.location.href = "flower.html"
+		})
+		setTimeout(function () {
+			$('.btn-2').show();
+		},3000)
+		setTimeout(function () {
+			$('.btn-3').show();
+		},3200)
+
+		$('.bird').animate({'opacity':1},4000)
+
+	</script>
+
+</html>

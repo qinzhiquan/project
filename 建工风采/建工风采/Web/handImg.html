@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- saved from url=(0013)about:internet -->
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/pogoSlider.css" />
+		<title></title>
+	</head>
+	<body>
+		<div class="pogoSlider" id="pogoSlider"></div>
+		<div class="Maiopc-back"><img src="img/back.png" draggable="false" onclick="back()"/></div>
+	</body>
+		
+	<script src="js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/pogoSlider.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/common.js" ></script>
+	<script>
+		var result = CsszUtils.getFile("Web/data/img");
+		var sliders = ["slideLeft", "slideRight", "blocksReveal", "verticalSlide", "verticalSplitReveal", "horizontalSplitReveal", "zipReveal", "barReveal", "shrinkReveal", "expandReveal", "verticalSlide", "SlideRevealLeft", "slideRevealRight", "SlideOverLeft", "slideOverRight", "BarsRevealDow"];
+		$(document).ready(function() {
+			var fileArray = result.split(',');
+			var html = [];
+			for (var i = 0; i < fileArray.length; i++) {
+				if (!fileArray[i]) {
+					continue;
+				}
+				var dataTransition = getSlider();
+				html.push('<div class="pogoSlider-slide" data-transition="' + dataTransition + '">');
+				html.push('<img src="data/img/' + fileArray[i] + '">');
+				html.push('</div>');
+			}
+			$('#pogoSlider').append(html.join(''));
+			
+			$('#pogoSlider').pogoSlider({
+				autoplay: false
+			});
+			
+			// 随机获取切换效果
+			function getSlider() {
+				var slidersLen = sliders.length;
+				var transition = Math.floor(Math.random() * slidersLen);
+				return sliders[transition];
+			}
+		});
+
+		// 自动轮询图片切换
+		function loopImg(){
+			window.location.href="loopImg.html"
+		}
+	
+		// 上一张
+		function prevImg() {
+			$('.btnBox1').click();
+		}
+		
+		// 下一站张
+		function nextImg() {
+			$('.btnBox2').click();
+		}
+		
+		function back(){
+//			closePage(function(e){
+//				
+//			});
+			closePage()
+		}
+	</script>
+	
+</html>

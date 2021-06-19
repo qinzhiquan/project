@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet" href="css/index.css">
+<style>
+    img{
+        user-drag:none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -khtml-user-select: none;
+        user-select: none;
+    }
+    body{
+        width: 100vw;
+        height: 100vh;
+    }
+    /*电子留言文字*/
+    .title{
+        display: block;
+        position: relative;
+        left: 38.8vw;
+        padding: 0;
+        z-index: 1;
+        animation: titleStart 2s linear 0s 1 normal, title 5s linear 2s infinite normal;
+    }
+    @keyframes titleStart {
+        0%{
+            left: 0;
+        }
+
+        100%{
+            left: 38.8vw;
+        }
+    }
+    @keyframes title {
+        0%{
+            top: 0;
+        }
+        25%{
+            top: 25px;
+        }
+        50%{
+            top: 0;
+        }
+        75%{
+            top: 25px;
+        }
+        100%{
+            top: 0;
+        }
+    }
+    .contextBox{
+        display: block;
+        margin: -55px auto 0 auto;
+        position: relative;
+        width: 0;
+        height: 982px;
+        overflow: hidden;
+    }
+    #canvasImg{
+        display: none;
+        position: absolute;
+        left: 135px;
+        top: 110px;
+        width: 1651px;
+        height: 970px;
+        z-index: 13;
+        opacity: 0;
+    }
+    .canvas_container {
+        position: relative;
+        width: 1523px;
+        height: 853px;
+        margin: 0 72px;
+        z-index: 10;
+        display: flex;
+        /*定义body的元素垂直居中*/
+        align-items: center;
+        /*定义body的里的元素水平居中*/
+        justify-content: center;
+    }
+    #canvas{
+        display: block;
+        margin:59px -1px;
+        z-index: 12;
+    }
+    .saveTitle{
+        /*display: none;*/
+        opacity: 0;
+        font-family: 隶书;
+        position: absolute;
+        top: 20vh;
+        left: 44vw;
+        text-align: center;
+        color: #860028;
+        font-size: 50px;
+        z-index: 1;
+    }
+    .saveErrorTitle{
+        /*display: none;*/
+        opacity: 0;
+        font-family: 隶书;
+        position: absolute;
+        top: 20vh;
+        left: 40.729vw;
+        text-align: center;
+        color: red;
+        font-size: 50px;
+        z-index: 1;
+    }
+
+    .layui-layer-btn a { height: 33px; line-height: 33px; margin: 5px 10px 0; border: 0}
+    .layui-layer-btn .layui-layer-btn0 { background: #161388; color: #fff; }
+    .layui-layer-btn .layui-layer-btn1 { background: #161388; color: #fff;}
+
+    .house{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 13;
+    }
+    .bird{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .people{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 13;
+    }
+</style>
+</head>
+<body>
+<div id="app">
+    <!--头部标题-->
+    <img class="title" src="image/signature/title.png">
+
+    <div class="contextBox" id="contextBox">
+        <!--画布-->
+        <div class="canvas_container" id="canvas_container">
+            <canvas id="canvas" height="847" width="100"></canvas>
+        </div>
+    </div>
+
+    <div class="btn_container">
+        <div class="btn_mask"></div>
+        <div class="btn pen">
+            <div class="option">
+                    <span class="pen_img" id="pen_size_10" size="25,15,10">
+                        <!--<span class="pen_img" id="pen_size_10" size="20,10,5">-->
+                        <span class="pen_size_10"></span>
+                    </span>
+                <!--<span class="pen_img" id="pen_size_5" size="12,6,3">-->
+                <span class="pen_img" id="pen_size_5" size="17,12,8">
+                        <span class="pen_size_5"></span>
+                    </span>
+                <!--<span class="pen_img" id="pen_size_2" size="6,3,2">-->
+                <span class="pen_img" id="pen_size_2" size="11,8,7">
+                        <span class="pen_size_2"></span>
+                    </span>
+            </div>
+        </div>
+        <div class="btn color">
+
+            <div class="option">
+                <span class="color-item red active" data-img="pen2-1.png"></span>
+                <span class="color-item blue" data-img="pen2-2.png"></span>
+
+                <span class="color-item orange" data-img="pen2-3.png"></span>
+                <span class="color-item deep_black" data-img="pen2.png"></span>
+            </div>
+        </div>
+        <div class="btn reset" id="reset"></div>
+        <div class="btn check" id="show"></div>
+        <div class="btn save"  id="save"></div>
+        <div class="btn back"  id="back"></div>
+    </div>
+
+    <!--左下角天安门-->
+    <img class="house" alt="" src="image/signature/house.png">
+    <!--右上角鸟群-->
+    <img class="bird" alt="" src="image/signature/bird.png">
+    <!--右下角烈士-->
+    <img class="people" alt="" src="image/signature/people.png">
+
+    <!--保存成功提示-->
+    <h3 class="saveTitle">保存成功</h3>
+    <!--保存失败提示-->
+    <h3 class="saveErrorTitle">请先签字再保存</h3>
+
+    <!--截图img-->
+    <img id="canvasImg" src='image/signature/bg.png'>
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/brush.js"></script>
+<script src="js/polyfill.min.js"></script>
+<script src="js/html2canvas.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/index.js"></script>
+<script src="js/jquery-animate-css-rotate-scale.js"></script>
+
+<script>
+    // 是否可以保存
+    let savaStatus = false;
+
+    document.getElementById('canvas').onmousedown = function(){
+        savaStatus = true;
+    }
+    document.getElementById('canvas').onmousemove = function(){
+	console.log('move2')
+        savaStatus = true;
+    }
+    document.getElementById('canvas').onmouseup = function(){
+        savaStatus = true;
+    }
+
+     document.getElementById('canvas').addEventListener('touchstart', function (e) {
+            savaStatus = true;
+        })
+        document.getElementById('canvas').addEventListener('touchmove', function (e) {
+            savaStatus = true;
+        })
+       document.getElementById('canvas').addEventListener('touchend', function (e) {
+            savaStatus = true;
+
+        })
+
+!function(){
+
+    $('.contextBox').animate({'width':'86%'},1500,function () {
+        $('.ink').fadeIn(500)
+    })
+
+    var container = document.querySelector(".canvas_container");
+    var width = container.offsetWidth;
+    var height = container.offsetHeight;
+    var canvas = document.getElementById("canvas");
+    canvas.style = "position: absolute;";
+    canvas.width = width;
+    canvas.height = height;
+    var ctx = canvas.getContext("2d");
+
+    // 绘制画板背景图
+    var canvas_bg = new Image();
+    canvas_bg.src = "image/signature/bg.png";
+    canvas_bg.onload = drawBg;
+    function drawBg(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(canvas_bg, 0,0, canvas.width, canvas.height + 10);
+    }
+
+    // 点击关闭罩层
+    var $mask = $(".btn_mask").click(function(){
+        $(this).hide();
+        $(".btn_container .btn .option").hide();
+    })
+
+    // 弹出选项
+    $(".btn_container .pen,.btn_container .color").click(function(){
+        $mask.show();
+        $(this).children().show();
+    })
+
+	// 默认笔画
+    var brush = new Brush({ max: 10, min: 7, end: 8, canvas: canvas});
+
+    // 改变大小
+    $("#pen_size_2,#pen_size_5,#pen_size_10").click(function(e){
+        e.stopPropagation();
+		//brush = null;
+		brush.changeSize($(this).attr("size").split(","));
+		$mask.click();
+    })
+
+    // 更换颜色
+    $(".color-item").click(function(e){
+        e.stopPropagation();
+		brush.changeColor($(this).attr("data-img"));
+        $mask.click();
+    })
+
+    // 重置画板
+    $("#reset").click(function(){
+        // brush.clear();
+        drawBg();
+        savaStatus = false;
+    })
+
+	// 查看
+	$("#show").click(function (){
+        window.location.href = 'showList.html'
+		// window.location.href = 'showList.html'
+	});
+
+    // 保存
+    $("#save").click(function(){
+        let contextBoxWidth = document.getElementById('canvas').offsetWidth;
+        let contextBoxHeight = document.getElementById('canvas').offsetHeight;
+        if(savaStatus){
+            html2canvas(document.getElementById("canvas"), {
+                width: contextBoxWidth ,
+                height: contextBoxHeight,
+                allowTaint: true, //允许污染
+                taintTest: true, //在渲染前测试图片(没整明白有啥用)
+                useCORS: true, //使用跨域(当allowTaint为true时这段代码没什么用)
+                background: "#fff",
+                onrendered: function( canvas ){
+                    // 将图片转为base64, 0-1 表示清晰度
+                    var imgBlob = canvas.toDataURL('image/png', 1.0);
+                    // 截取base64数据
+                    var base64Data = imgBlob.toString().substring(imgBlob.indexOf(",") + 1);
+                    var result = CsszUtils.base64ToImageFile('Web/data/img/signature', base64Data);
+
+                   document.getElementById('canvasImg').src = imgBlob;
+                    $('#canvasImg').show();
+
+                    var startIndex = result.lastIndexOf("\\") + 1;
+                    var fileName = result.substring(startIndex, result.length);
+
+                    if (result && result.length > 0) {
+                        sendUdp("1|addImg|'" + fileName + "'");
+                    }
+                }
+            });
+
+            setTimeout(function () {
+                $('.saveTitle').animate({'opacity':'1','z-index':'21'}, 100, function () {
+                    $('.saveTitle').animate({'opacity': 0,'z-index':'1'}, 2000)
+                });
+                // $('.ink').fadeOut(500);
+
+                $('#canvasImg').stop(true,false).animate({'opacity':'1','width':'305','height':'167','top':'350px','left':'40%'},1000).promise().then(function () {
+                    $('#canvasImg').stop(true,false).animate({'top':'-200px'},500).promise().then(function () {
+                        drawBg();
+                        savaStatus = false;
+                        $('#canvasImg').css({'opacity':'0','display':'none','z-index':'13','width':'1651px','height':'970px','top':'110px','left':'135px','position':'absolute'})
+                        // $('.ink').fadeIn(500)
+                    })
+                })
+            },100)
+        }else{
+            $('.saveErrorTitle').animate({'opacity':'1','z-index':'21'}, 100, function () {
+                $('.saveErrorTitle').animate({'opacity': '0','z-index':'1'}, 2000)
+            });
+        }
+    })
+    // 返回
+    $("#back").click(function(){
+       window.location.href = 'index.html'
+    })
+}()
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/*公共背景样式*/
+.main {
+    border-top: 1px solid #ccc;
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("../image/0.jpg");
+    background-size: 100vw 100vh;
+    opacity: 0.1;
+}
+/*公用header样式*/
+header{
+    width: 27vw;
+    height: 20vh;
+    border-right: 1px solid black;
+    background-color: beige;
+    margin:30px auto;
+}
+/*公用返回按钮样式*/
+.get_back{
+    position: absolute;
+    right: 7vw;
+    top: 10vh;
+    width: 120px;
+    height: 120px;
+    border: 3px double blue;
+    border-radius: 50%;
+    background-color: green;
+    font-size: 30px;
+    text-align: center;
+    line-height: 120px;
+}
+.get_back img{
+    height: 120px;
+    border-radius: 50%;
+}
+/*公用猴子列表样式*/
+.all_kind{
+    overflow: auto;
+    width: 78vw;
+    height: 50vh;
+    border: 1px black solid;
+    background-color: skyblue;
+    margin: 10vh auto 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.all_kind div>img{
+    width:14vw;
+    /*height: 45%;*/
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: 10px;
+}
+/*主页标题div*/
+.home_title{
+    width: 50vw;
+    height: 21vh;
+    border: 3px double green;
+    margin: 22vh auto;
+}
+/*主页标题h1*/
+.home_title>h1{
+    line-height: 21vh;
+    background-color: aqua;
+    text-align: center;
+}
+/*主页两个按钮父级div*/
+.home_content{
+    width: 30vw;
+    height: 20vh;
+    border: 1px black solid;
+    /*background-color: green;*/
+    margin:auto;
+    display: flex;
+    justify-content: space-between;
+}
+/*主页按钮*/
+.home_content>.home_button{
+    height: 100%;
+    width: 40%;
+    line-height: 100px;
+    font-size: 30px;
+    text-align: center;
+    /*background-color: azure;*/
+    border: 1px solid red;
+    border-radius: 50%;
+}
+.home_content .home_button a{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.home_content .home_button a img{
+    border: 10px solid black;
+    border-radius: 50%;
+    height: 70%;
+}
+.home_content .home_button a button{
+    color: white;
+    height: 30%;
+    font-size: 25px;
+    background-color:rgba(0,0,0,0);
+}
+
+section{
+    display: flex;
+    justify-content: space-around;
+}
+section>div{
+    width: 40vw;
+    height: 50vh;
+    margin-top: 5vh;
+    background-color: skyblue;
+}
+section>div img{
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    width: 75vw;
+    height: 60vh;
+    border: 1px black solid;
+    background-color: skyblue;
+    margin: 10vh auto 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.content .monkeyImage{
+    height: 50vh;
+    width: 29vw;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: aquamarine;
+    position: absolute;
+    left: -10vw;
+    top: -5vh;
+    margin: 50px;
+}
+.content .monkeyImage img{
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.content> .monkeyTxt{
+    width: 100%;
+    margin: 1vw 5vw 5vw 22vw;
+    line-height: 5vh;
+    color: black;
+    font-weight: bolder;
+    overflow: auto;
+    padding: 1vh 1vh 1vh 2vh;
+}
+.content> .monkeyTxt h1{
+    text-align: center;
+}
+.content> .monkeyTxt p{
+    text-indent: 2em;
+}
+
+/*滚动条样式*/
+/*颜色*/
+.content> .monkeyTxt::-webkit-scrollbar-track {
+    background-color: skyblue;
+}
+/*宽度*/
+.content> .monkeyTxt::-webkit-scrollbar {
+    width: 10px;
+}
+.content> .monkeyTxt::-webkit-scrollbar-thumb {
+    background-color: pink;
+    border-radius: 50%;
+}

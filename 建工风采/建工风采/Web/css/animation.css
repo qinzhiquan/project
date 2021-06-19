@@ -1,0 +1,168 @@
+﻿
+@-webkit-keyframes WrotateL{
+	from {
+		transform:rotate(0deg);
+	} 
+    to {
+        transform:rotate(30deg);           
+    }
+}
+@-webkit-keyframes WrotateR{
+	from {
+		transform:rotate(0deg);
+	} 
+    to {
+        transform:rotate(-30deg);           
+    }
+}
+
+@keyframes scale {
+	0% {
+		transform: scale(1.2);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes rubberBands {
+	0% {
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1);
+		-ms-transform: scaleX(1);
+	}
+
+	30% {
+		-webkit-transform: scale3d(1.25, 1, 1);
+		transform: scale3d(1.25, 1, 1);
+		-ms-transform: scaleX(1.25, 1, 1);
+	}
+
+	80% {
+		-webkit-transform: scale3d(1, 1.25, 1);
+		transform: scale3d(1, 1.25, 1);
+		-ms-transform: scaleX(1, 1.25, 1);
+	}
+
+
+	to {
+		opacity: 1;
+		-webkit-transform: scaleX(1.1);
+		transform: scaleX(1.1);
+		-ms-transform: scaleX(1.1);
+	}
+}
+
+@keyframes WrubberBands {
+	0% {
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1);
+		-ms-transform: scaleX(1);
+	}
+	30% {
+		-webkit-transform: scale3d(1.1, 1, 1);
+		transform: scale3d(1.1, 1, 1);
+		-ms-transform: scaleX(1.1, 1, 1);
+	}
+	80% {
+		-webkit-transform: scale3d(1, 1.1, 1);
+		transform: scale3d(1, 1.1, 1);
+		-ms-transform: scaleX(1, 1.1, 1);
+	}
+	to {
+		opacity: 1;
+		-webkit-transform: scaleX(1.1);
+		transform: scaleX(1.1);
+		-ms-transform: scaleX(1.1);
+	}
+}
+
+@keyframes shake {
+        0%{
+            transform: scale(0);
+        }
+        30%{
+            transform: scale(1.2);
+        }
+        40%{
+            transform: scale(0.8);
+        }
+        50%{
+            transform: scale(1.15);
+        }
+        60%{
+            transform: scale(0.9);
+        }
+        70%{
+            transform: scale(1.1);
+        }
+        80%{
+            transform: scale(0.95);
+        }
+        90%{
+            transform: scale(1.05);
+        }
+        100%{
+            transform: scale(1);
+        }
+    }
+
+/*头部出场*/
+.projectHall-lightLeft img{animation:2s unfold 1.2s ease-in-out forwards; opacity: 0;}
+.projectHall-star img{animation:1.5s fadeIn ease-in-out forwards; opacity: 0;}
+.projectHall-lightRight img{animation:2s unfold 1.2s ease-in-out forwards; opacity: 0;}
+
+.projectHall-lightLeft{animation:8s WrotateL ease-in-out infinite alternate;transform-origin:0 0;}
+/*.projectHall-star{animation:8s scale ease-in-out infinite alternate;}*/
+.projectHall-lightRight{animation:8s WrotateR ease-in-out infinite alternate;transform-origin:right top;}
+
+/*头部标题出场*/
+.projectHall-logo img{animation:2s popInTop 0.7 ease-in-out forwards; opacity: 0;}
+.projectHall-bigTitle img{animation:2s popIn 0.8 ease-in-out forwards; opacity: 0;}
+.projectHall-litleTitle img{animation:2s popInBottom 0.8 ease-in-out forwards; opacity: 0;}
+
+.projectHall-logo{animation:15s shake ease-in-out infinite alternate;}
+.projectHall-bigTitle{}
+.projectHall-litleTitle{}
+
+
+/*旁边圆圈出场*/
+.projectHall-spot img{animation:2.5s zoomIn 0.5s ease-in-out forwards; opacity: 0;}
+
+/*.projectHall-spot{animation:18s WrubberBands ease-in-out infinite alternate;}*/
+
+/*大标题出场*/
+.projectHall-wingLeft img{animation:1.5s swoopInLeft 1s ease-in-out forwards; opacity: 0;}
+.projectHall-wingright img{animation:1.5s swoopInRight 1s ease-in-out forwards; opacity: 0;}
+.projectHall-jian img{animation:2.5s swoopInTop 1.2s ease-in-out forwards; opacity: 0;}
+.projectHall-gong img{animation:2.5s swoopInTop 1.3s ease-in-out forwards; opacity: 0;}
+.projectHall-feng img{animation:2.5s swoopInTop 1.4s ease-in-out forwards; opacity: 0;}
+.projectHall-cai img{animation:2.5s swoopInTop 1.5s ease-in-out forwards; opacity: 0;}
+
+/*大标题循环*/
+.projectHall-wingLeft{animation:5s wingLeft ease-in-out infinite alternate;}
+/*.projectHall-wingright{animation:6s pulsate ease-in-out infinite alternate;}*/
+/*.projectHall-jian{animation:15s tada ease-in-out infinite alternate;}
+.projectHall-gong{animation:17s tada ease-in-out infinite alternate;}
+.projectHall-feng{animation:19s tada ease-in-out infinite alternate;}
+.projectHall-cai {animation:21s tada ease-in-out infinite alternate;}*/
+
+/*底部出场*/
+.projectHall-starBottom img{animation:4s bounceInUp 0.8s ease-in-out forwards; opacity: 0;}
+
+.projectHall-starBottom{animation:15s scale ease-in-out infinite alternate;}
+
+
+/*nav页面*/
+.projectHall-logoTitle img{animation:1.5s bounceInDown 0.1s ease-in-out forwards; opacity: 0;}
+.projectHall-logoTitle{animation:20s scale ease-in-out infinite alternate;}
+
+/*灯*/
+.projectHall-lightLeft-nav img{animation:1.5s bounceInLeft 0.2s ease-in-out forwards; opacity: 0;}
+.projectHall-lightRight-nav img{animation:1.5s bounceInRight 0.2s ease-in-out forwards; opacity: 0;}
+
+.btnBox1 img{animation:2s bounceInUp 1s ease-in-out forwards; opacity: 0;}
+.btnBox2 img{animation:2s bounceInUp 1.2s ease-in-out forwards; opacity: 0;}
+
+.backAnimate{animation:1s bounceInUp 0.2s ease-in-out forwards;}

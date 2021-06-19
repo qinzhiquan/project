@@ -1,0 +1,91 @@
+* {
+		padding: 0;
+		margin: 0;
+		/* 禁止选择 */
+		-moz-user-select: none;
+		/*火狐*/
+		-webkit-user-select: none;
+		/*webkit浏览器*/
+		-ms-user-select: none;
+		/*IE10*/
+		-khtml-user-select: none;
+		/*早期浏览器*/
+		user-select: none;
+		/* 禁止手机点击出现蓝条 */
+		-webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+		-webkit-appearance: none;
+	}
+
+	/*body {
+		background: url(../img/bg.png) no-repeat 100%;
+		width: 100%;
+		height: 100vh;
+		overflow: hidden;
+	}*/
+
+	.con {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		margin: 0 auto;
+		box-sizing: border-box;
+		/*padding: 7%;*/
+		animation: bounceInUp 1s ease-in-out forwards;
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		font-family: "microsoft yahei";
+		font-weight: 500;
+		letter-spacing: 2px;
+		line-height: 180%;
+	}
+
+	h1,
+	h2,
+	h3 {
+		text-align: center;
+	}
+
+	p {
+		font-size: 20px;
+		text-indent: 2em;
+	}
+
+	.title {
+		position: fixed;
+		top: 0;
+		left: 0;
+		margin: 20px;
+	}
+
+	.backhome {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		margin: 10px;
+		z-index: 99;
+	}
+
+	.home {
+		z-index: 2;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		text-align: center;
+		margin: 10px 0;
+	}
+	.back{
+		z-index: 3;
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		margin: 10px 0;
+	}
+	
+	.textX{background: white; width: 100%; position: absolute; bottom: 0;}
+	.textX h3{padding: 12px; text-align: left; }
+	.photo{height: 100vh;}
+	.photo img{height: 100%;}

@@ -1,0 +1,420 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body {
+     width: 100vw;
+     height: 100vh;
+    overflow: hidden;
+ }
+body {
+    display: flex;
+    /*定义body的元素垂直居中*/
+    align-items: center;
+    /*定义body的里的元素水平居中*/
+    justify-content: center;
+}
+a{
+    text-decoration: none;
+}
+/*背景样式*/
+.main {
+    width: 1920px;
+    height: 1080px;
+    /*width: 100vw;*/
+    /*height: 100vh;*/
+    background-image:url("../img/bg.jpg");
+    background-size: 100% 100%;
+    position: relative;
+    margin: 0 auto!important;
+	overflow:hidden;
+}
+
+/*主页标题div*/
+.logo{
+    width: 100%;
+    /*width: 100vw;*/
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+/*照一照,比一比*/
+.logo>img:nth-child(1){
+    position: absolute;
+    top: 585px;
+    left: 460px;
+    /*top: 60.185vh;*/
+    /*left: 23.958vw;*/
+    animation: BottomToTop 2s linear normal;
+}
+/*下往上动画*/
+@keyframes BottomToTop {
+    from {
+        top: 1080px;
+        /*top: 100vh;*/
+    }
+    to {
+        top: 650px;
+        /*top: 60.185vh;*/
+    }
+}
+/*书卷*/
+.logo>img:nth-child(2){
+    position: absolute;
+    top: 385px;
+    left: 296px;
+    /*top: 41.667vh;*/
+    /*left: 27.407vw;*/
+    animation: LeftToRight 2s linear normal;
+}
+/*左往右动画*/
+@keyframes LeftToRight {
+    from {
+        left: 0;
+    }
+    to {
+        left: 296px;
+        /*left: 27.407vw;*/
+    }
+}
+/*大标题*/
+.logo>img:nth-child(3){
+    position: absolute;
+    top: 160px;
+    left: 455px;
+    animation: 18s shake 2s ease-in-out infinite alternate;
+    /*top: 24.074vh;*/
+    /*left: 23.698vw;*/
+    /*animation: TopToBottom 2s linear normal,changeLR 5s linear 2s infinite normal;*/
+}
+/*人脸识别图标*/
+.logo>img:nth-child(6){
+    position: absolute;
+    top: 214px;
+    left: 785px;
+    animation: 18s shake 2s ease-in-out infinite alternate;
+}
+.faceLine img {
+    animation: 18s shake 2s ease-in-out infinite alternate;
+}
+.faceLine {
+	position: absolute;
+    top: 225px;
+    left: 43.2%;
+    z-index: 1;
+    animation: 5s faceLine 2s ease-in-out infinite;
+}
+@keyframes faceLine{
+	from{
+		position: absolute;
+   		top: 225px;
+	}
+	to{
+		position: absolute;
+   		top: 334px;
+	}
+}
+
+.empty {
+	position: absolute;
+	bottom: 20%;
+	left: 20%;
+	right: 20%;
+	text-align: center;
+	z-index: 5;
+}
+
+/*上往下动画*/
+@keyframes TopToBottom {
+    from {
+        top: 0;
+    }
+    to {
+        top: 260px;
+        /*top: 24.074vh;*/
+    }
+}
+/*左右移动动画*/
+@keyframes changeLR {
+    0%{
+        left: 455px;
+        /*left: 23.698vw;*/
+    }
+    25%{
+        left: 425px;
+        /*left: 22.135vw;*/
+    }
+    50%{
+        left: 455px;
+        /*left: 23.698vw;*/
+    }
+    75%{
+        left: 485px;
+        /*left: 25.260vw;*/
+    }
+    100%{
+        left: 455px;
+        /*left: 23.698vw;*/
+    }
+}
+
+/*上往下动画*/
+@keyframes TopToBottom2 {
+    from {
+        top: 0;
+    }
+    to {
+        top: 260px;
+        /*top: 24.074vh;*/
+    }
+}
+/*左右移动动画*/
+@keyframes changeLR2 {
+    0%{
+        left: 455px;
+        /*left: 23.698vw;*/
+    }
+    25%{
+        left: 425px;
+        /*left: 22.135vw;*/
+    }
+    50%{
+        left: 455px;
+        /*left: 23.698vw;*/
+    }
+    75%{
+        left: 485px;
+        /*left: 25.260vw;*/
+    }
+    100%{
+        left: 455px;
+        /*left: 23.698vw;*/
+    }
+}
+/*英语标题*/
+.logo>img:nth-child(4){
+    position: absolute;
+    top: 500px;
+    left: 495px;
+    animation: RightToLeft 2s linear normal;
+}
+/*右往左动画*/
+@keyframes RightToLeft {
+    from {
+        left: 1920px;
+    }
+    to {
+        left: 495px;
+    }
+}
+
+/*猴子拿相机动画*/
+.camera{position: absolute; right: 0; bottom: 16%;}
+
+/*眼球*/
+.logo>img:nth-child(5){
+    position: absolute;
+    top: 358px;
+    left: 710px;
+    animation: spin 5s linear 2s infinite normal,dap 2s linear normal,changeLR2 18s linear 2s infinite normal;
+}
+/*左右移动动画2*/
+@keyframes changeLR2 {
+    0%{left: 700px;}
+    25%{left: 710px;}
+    50%{left: 710px;}
+    75%{left: 710px;}
+    100%{left: 700px;}
+}
+/*图片旋转动画*/
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+/*跳动动画*/
+@keyframes dap {
+    0%{left:960px;top:0;opacity: 0}
+    20%{left:0;top:540px}
+    40%{left:960px;top:1080px}
+    60%{left:1920px;top:540px}
+    80%{left:960px;top:0}
+    100%{left:710px;top:400px;opacity: 1}
+}
+
+/*圆形logo1*/
+.logoImg1{
+    position: absolute;
+    top: 40px;
+    left: 70px;
+    z-index: 3;
+    /*animation: spin 5s linear 0s infinite normal;*/
+}
+/*圆形logo2*/
+.logoImg2{
+    position: absolute;
+    top: 40px;
+    left: 140px;
+    z-index: 3;
+    /*animation: spin 5s linear 0s infinite normal;*/
+}
+/*logo中文文字*/
+.logoTitleCN {
+    position: absolute;
+    left: 210px;
+    top: 40px;
+    font-size: 30px;
+    width: 440px;
+    height: 40px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+.logoTitleCN span {
+    text-shadow: 2px -2px 2px black,2px 0px 3px black,2px 0px 3px black;
+}
+.loading05 {
+    perspective: 1000px;
+}
+.loading05 span {
+    transform-origin: 50% 50% -25px;
+    transform-style: preserve-3d;
+    animation: loading05 2.6s infinite;
+}
+.loading05 span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.loading05 span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.loading05 span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+.loading05 span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+.loading05 span:nth-child(6) {
+    animation-delay: 0.5s;
+}
+.loading05 span:nth-child(7) {
+    animation-delay: 0.6s;
+}
+.loading05 span:nth-child(8) {
+    animation-delay: 0.7s;
+}
+.loading05 span:nth-child(9) {
+    animation-delay: 0.8s;
+}
+.loading05 span:nth-child(10) {
+    animation-delay: 0.9s;
+}
+.loading05 span:nth-child(11) {
+    animation-delay: 1.0s;
+}
+.loading05 span:nth-child(12) {
+    animation-delay: 1.1s;
+}
+@keyframes loading05 {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+}
+
+/*logo英文文字*/
+.logoTitleEn {
+    position: absolute;
+    left: 88px;
+    top: 80px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    transform: scale(0.65);
+}
+.logoTitleEn span{
+    letter-spacing:2px;
+}
+
+/*树*/
+.tree{
+    position: absolute;
+    top: 280px;
+    left: 0;
+}
+/*右边阴影树*/
+.tree2{
+    position: absolute;
+    top: 280px;
+    right: 0;
+}
+/*白云1*/
+.cloud1{
+    position: absolute;
+    top: 40px;
+    right: 0;
+}
+/*白云2*/
+.cloud2{
+    position: absolute;
+    top: 150px;
+    left: 240px;
+}
+/*白云3*/
+.cloud3{
+    position: absolute;
+    top: 150px;
+    left: 1050px;
+}
+/*leaf*/
+.leaf{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+/*光照*/
+.light{
+    position: absolute;
+    top: 247px;
+    left: 600px;
+    z-index: 1;
+    animation: lightDap 2s linear normal,lightChangeLR2 5s linear 2s infinite normal;
+}
+/*光左右移动动画2*/
+@keyframes lightChangeLR2 {
+    0%{left: 610px;}
+    25%{left: 615px;}
+    50%{left: 620px;}
+    75%{left: 615px;}
+    100%{left: 610px;}
+}
+/*跳动动画*/
+@keyframes lightDap {
+    0%{left:860px;top:-80px;opacity: 0}
+    20%{left:-100px;top:460px}
+    40%{left:860px;top:1000px}
+    60%{left:1820px;top:460px}
+    80%{left:860px;top:-80px}
+    100%{left:610px;top:320px;opacity: 1}
+}
+/*边框图片*/
+.border{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+
+
+
+
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- saved from url=(0013)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link href="css/video-js.min.css" rel="stylesheet" />
+	</head>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		
+		.video-js {
+			width: 100% !important;
+			height: 100vh !important;
+		}
+		/*返回按钮*/
+		.Maiopc-back{width:100%; position: fixed; bottom: 35px; text-align: right;}
+		.Maiopc-back img{width: 5%;}
+	</style>
+
+	<body id="_body">
+		<video id="my-video" class="video-js" preload="auto" poster="" data-setup="{}" controls="controls" autoplay="autoplay">
+			
+		</video>
+		<div class="Maiopc-back"><img src="btn/back.png" draggable="false" onclick="back()"/></div>
+	</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/video.min.js"></script>
+	<script src="js/common.js"></script>
+	<script type="text/javascript">
+		var videoList = [];
+		var path = "data/video/";
+		var command = getUrlParam("name");
+		var reqParams = command.split("|");
+		var result = CsszUtils.getFile("Web/" + path + reqParams[0]);
+		var fileArray = result.split(',');
+		for(var i = 0; i < fileArray.length; i++) {
+			if(!fileArray[i]) {
+				continue;
+			}
+			videoList.push(path + reqParams[0] + "/" + fileArray[i]);
+		}
+
+		var index = 0;
+		var video = videojs('my-video');
+		videojs("my-video").ready(function() {
+			var video = this;
+//			alert(videoList[index]);
+			video.src(videoList[index]);
+			video.load(videoList[index]);
+			video.play();
+		});
+		
+		// 视频播放完回nav页面
+		videojs("my-video").on("ended",function(){
+//			window.location.href="nav.html"
+			parent.closePage(function(e) {
+				
+			});
+		})
+
+		// 播放
+		function playVideo() {
+			//video.src(videoList[index]);
+			//video.load(videoList[index]);
+			video.play();
+		}
+
+		// 暂停
+		function stopVideo() {
+			video.pause();
+		}
+
+		//音量+
+		function addVolume() {
+			var curVolume = video.volume();
+			if(curVolume < 1) {
+				video.volume(curVolume + 0.1);
+			}
+		}
+
+		//音量-
+		function subVolume() {
+			var curVolume = video.volume();
+			if(curVolume > 0.1) {
+				video.volume(curVolume - 0.1);
+			}
+		}
+
+		//上一个视频
+		function prevVideo() {
+			index--;
+			if(index < 0) {
+				index = 0;
+				return;
+			}
+			video.src(videoList[index]);
+			video.load(videoList[index]);
+			video.play();
+		}
+
+		//下一个视频
+		function nextVideo() {
+			index++;
+			if(index >= fileSize) {
+				index = fileSize - 1;
+				return;
+			}
+			video.src(videoList[index]);
+			video.load(videoList[index]);
+			video.play();
+		}
+		// 页面跳转
+		function StandJump(page) {
+			fadeOutPage('_body', page);
+		}
+		
+		function back(){
+			parent.closePage(function(e) {
+				
+			});
+		}
+		
+	</script>
+
+</html>

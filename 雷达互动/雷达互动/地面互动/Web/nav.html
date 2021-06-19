@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet" href="css/index.css">
+<style>
+
+</style>
+</head>
+<body ontouchmove="javascript:window.event.preventDefault();">
+
+    <div id="app">
+        <div class="bg_img"></div>
+
+        <div class="top_title">
+            <div class="title_logo"><img src="img/logo.png" alt=""></div>
+            <p class="company_name">
+                <span>广</span>
+                <span>西</span>
+                <span>建</span>
+                <span>工</span>
+                <span>集</span>
+                <span>团</span>
+                <span>企</span>
+                <span>业</span>
+                <span>文</span>
+                <span>化</span>
+                <span>展</span>
+                <span>示</span>
+                <span>馆</span>
+            </p>
+        </div>
+
+        <div class="big_title">
+            <div class="btn_box">
+                <div class="img_box_shadow"></div>
+                <img src="img/btn.png" draggable="false" alt="">
+                <span class="btn_name">工程示范</span>
+            </div>
+            <div class="btn_box">
+                <div class="img_box_shadow"></div>
+                <img src="img/btn.png" draggable="false" alt="">
+                <span class="btn_name">产业板块</span>
+            </div>
+            <div class="btn_box">
+                <div class="img_box_shadow"></div>
+                <img src="img/btn.png" draggable="false" alt="">
+                <span class="btn_name">发展板块</span>
+            </div>
+            <div class="btn_box">
+                <div class="img_box_shadow"></div>
+                <img src="img/btn.png" draggable="false" alt="">
+                <span class="btn_name">组织架构</span>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="center_img_box">
+        <img class="center_img" src="img/center_bg.png" alt="">
+    </div>
+    <div class="alpha_mask"></div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/bg_animate.js"></script>
+<script src="js/index.js"></script>
+<script src="app.config.js"></script>
+<script>
+!function(){
+
+    var btns = document.querySelectorAll(".btn_box");
+
+    var last_play_index = null;
+
+    for(var i = 0; i < btns.length; i++){
+        btns[i].index = i;
+        // btns[i].addEventListener("mousemove",  handleMove);
+        btns[i].addEventListener("mouseenter",  function(e){
+
+            // 保存当前上下文
+            var _this = this;
+            
+            setTimeout(function(){
+                // 不能重复触发
+                // if( last_play_index == _this.index ) return;
+                
+                $box_shadow = $(_this).find(".img_box_shadow");
+
+                // 发送请求，播放视频
+                switch(_this.index){
+                    case 0:
+                        remotJs('showPage', 'video.html?name=sfgc');
+                        last_play_index = _this.index;
+                        break;
+                    case 1:
+                        remotJs('showPage', 'video.html?name=cybk');
+                        last_play_index = _this.index;
+                        break;
+                    case 2:
+                        remotJs('showPage', 'map.html');
+                        last_play_index = _this.index;
+                        break;
+                    case 3:
+                        remotJs('showPage', 'organize.html');
+                        last_play_index = _this.index;
+                        break;
+                }
+
+                // 添加红色阴影
+                $box_shadow.addClass("active");
+
+                // 移除红色阴影
+                !function(obj, self){
+                    setTimeout(function(){
+                        obj.removeClass("active");
+                    }, btn_touch_limit_time * 1000);
+                }($box_shadow, _this)
+
+            }, delay_touch_time * 1000);
+        });
+        btns[i].addEventListener("mouseleave",  function(e){
+
+        })
+    }
+
+    // 设置按钮大小
+    $(btns).css({
+        width: btn_wh * .9673,
+        height: btn_wh
+    })
+    // 设置按钮的左右间距
+    $(btns).css({
+        marginLeft: btn_margin,
+        marginRight: btn_margin
+    })
+
+    // 设置按钮字体大小
+    var $span = $(btns).find("span");
+    $span.css("font-size", btn_font_size);
+    // 按钮字体垂直居中
+    var span_height = parseInt( $span.css("height") );
+    $span.css("margin-top", - span_height / 2);
+
+    // 返回待机页面
+    timesBack();
+    document.addEventListener("click", function(e){
+        window.clearTimeout(timeoutId);
+        timeoutId = timesBack();
+    })
+
+    
+
+    function handleMove(e){
+        if( this.stop == undefined ) this.stop = false;
+
+        // 如果小于触发间隔 则不执行
+        if( (this.last_time && new Date() - this.last_time < btn_touch_limit_time * 1000) || this.lock ) return;
+
+        var _this = this;
+        
+        // 保存起始值
+        if( !this.stop ){
+            this.start_coord = {x: e.clientX, y: e.clientY};
+            this.stop = true;
+        };
+        
+        // 保存结束值
+        this.end_coord = {x: e.clientX, y: e.clientY};
+            
+        // 延迟xxx毫秒发送数据
+        clearTimeout(this.timer);
+        this.timer = setTimeout(function(){
+
+            // 移动距离大于设定值才触发
+            if( !(Math.abs(_this.start_coord.x - _this.end_coord.x) > move_offset || Math.abs(_this.start_coord.y - _this.end_coord.y) > move_offset) ) return;
+
+            // 不能重复触发
+            if( last_play_index == _this.index ) return;
+            
+
+            $box_shadow = $(_this).find(".img_box_shadow");
+
+            // 发送请求，播放视频
+            switch(_this.index){
+                case 0:
+                    remotJs('showPage', 'video.html?name=示范工程');
+                    last_play_index = _this.index;
+                    break;
+                case 1:
+                    remotJs('showPage', 'video.html?name=产业版块');
+                    last_play_index = _this.index;
+                    break;
+                case 2:
+                    remotJs('showPage', 'map.html');
+                    last_play_index = _this.index;
+                    break;
+                case 3:
+                    remotJs('showPage', 'organize.html');
+                    last_play_index = _this.index;
+                    break;
+            }
+
+            // 添加红色阴影
+            $box_shadow.addClass("active");
+
+            // 移除红色阴影
+            !function(obj, self){
+                setTimeout(function(){
+                    obj.removeClass("active");
+                }, btn_touch_limit_time * 1000);
+            }($box_shadow, _this)
+
+            // 保存最后一次的值
+            _this.last_time = new Date();
+            _this.stop = false;
+
+        }, delay_touch_time * 1000);
+    }
+
+}()
+</script>
+</body>
+</html>
